@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, Image, Button ,TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Ipcim from './Ipcim'
-
+import Ipcim from './Ipcim';
 
 const Proba2 = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
@@ -49,12 +48,13 @@ const Proba2 = ({navigation}) => {
 
                 <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.alkatresz_ar} FT</Text>
 
+                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('Kiirat', {nev:item.alkatresz_info, kep:item.alkatresz_kep, ar:item.alkatresz_ar })}>
+          <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
+        </TouchableOpacity>
 
-                <TouchableOpacity style={{backgroundColor:"#06c995",width:175,height:45,padding:8,marginLeft:77}} onPress={() => navigation.navigate('Kiirat', {nev:item.alkatresz_info, kep:item.alkatresz_kep, garancia:item.alkatresz_garancia, ar:item.alkatresz_ar })}>
-                    <Text style={{color:'black',textAlign:'center',fontSize:18}} >Részletek</Text>
-                </TouchableOpacity>
 
                 
+
 
                 <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1 }}></View>
 
@@ -73,4 +73,4 @@ const Proba2 = ({navigation}) => {
   );
 };
 
-export default Retek;
+export default Proba2;

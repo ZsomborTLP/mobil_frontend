@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const App = () => {
+const proba3 = () => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
     const getMovies = async () => {
         try {
-            const response = await fetch('http://192.168.10.62:3000/eszkozok');
+            const response = await fetch('http://192.168.10.58:3000/eszkozok');
             const json = await response.json();
             setData(json);
         } catch (error) {
@@ -39,4 +39,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default proba3;

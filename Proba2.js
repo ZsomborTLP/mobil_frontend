@@ -9,7 +9,7 @@ const Proba2 = ({navigation}) => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch('http://192.168.10.62:3000/pcAlkatresz');
+      const response = await fetch('http://192.168.10.58:3000/pcAlkatresz');
       const json = await response.json();
       setData(json);
     } catch (error) {
