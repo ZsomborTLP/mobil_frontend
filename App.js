@@ -22,11 +22,7 @@ function HomeScreen({ navigation }) {
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          onPress={() => navigation.navigate('Notifications')}
-          title="Go to notifications"
-        />
-
+        
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('Retek')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Pc alkatrészek</Text>
@@ -48,7 +44,7 @@ function Root({ navigation }) {
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeScreen} ></Drawer.Screen>
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
-      <Drawer.Screen name="Lenyilo" component={Lenyilo} ></Drawer.Screen>
+
 
 
     </Drawer.Navigator>

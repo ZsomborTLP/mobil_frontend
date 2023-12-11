@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, Image, Button ,TouchableOpacity} from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim';
 
-const Proba2 = ({navigation}) => {
+const Proba2 = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -24,12 +24,12 @@ const Proba2 = ({navigation}) => {
   }, []);
 
   return (
-    
+
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
-      
+
       <View style={{ flex: 1, padding: 24, }}>
 
         {isLoading ? (
@@ -43,17 +43,17 @@ const Proba2 = ({navigation}) => {
                 <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 5 }}>
                   {item.alkatresz_info}
                 </Text>
-                <Image source={{ uri: `${Ipcim.Ipcim}${item.alkatresz_kep}` }} style={{ width: 125, height: 125, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10 }} />
+                <Image source={{ uri: `${Ipcim.Ipcim}${item.alkatresz_kep}` }} style={{ width: 135, height: 135, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10 }} />
 
 
                 <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.alkatresz_ar} FT</Text>
 
-                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('Kiirat', {nev:item.alkatresz_info, kep:item.alkatresz_kep, ar:item.alkatresz_ar })}>
-          <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
-        </TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 77 }} onPress={() => navigation.navigate('Kiirat', { nev: item.alkatresz_info, kep: item.alkatresz_kep, garancia: item.alkatresz_garancia, ar: item.alkatresz_ar })}>
+                  <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
+                </TouchableOpacity>
 
 
-                
+
 
 
                 <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1 }}></View>
@@ -63,13 +63,13 @@ const Proba2 = ({navigation}) => {
           />
 
 
-          
+
         )}
 
       </View>
     </LinearGradient>
 
-    
+
   );
 };
 
