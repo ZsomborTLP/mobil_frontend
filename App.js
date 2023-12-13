@@ -8,12 +8,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import Proba from './Proba';
 import Proba2 from './Proba2';
-import Proba3 from './Proba3';
 import Kiirat from './Kiirat';
 import Retek from './Retek';
-import Mogyoro from './Mogyoro';
 import Felvitel from './felvitel';
-import Lenyilo from './Lenyilo';
+import Kosarba from './Kosarba';
+import Kozosscreen from './Kozosscreen'
+import Ujlap from './Ujlap'
 
 function HomeScreen({ navigation }) {
   return (
@@ -44,6 +44,8 @@ function Root({ navigation }) {
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeScreen} ></Drawer.Screen>
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
+      <Drawer.Screen name="Kosarba" component={Kosarba} ></Drawer.Screen>
+      
 
 
 
@@ -116,6 +118,7 @@ export default function App() {
         <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
         <Stack.Screen name="Kiirat" component={Kiirat} />
         <Stack.Screen name="Retek" component={Retek} />
+        
 
       </Stack.Navigator>
     </NavigationContainer>
