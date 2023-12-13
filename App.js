@@ -6,14 +6,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-import Proba from './Proba';
-import Proba2 from './Proba2';
 import Kiirat from './Kiirat';
 import Retek from './Retek';
 import Felvitel from './felvitel';
 import Kosarba from './Kosarba';
-import Kozosscreen from './Kozosscreen'
-import Ujlap from './Ujlap'
+import NintendoTart from './NintendoTart';
+import KiiratNintendo from './KiiratNintendo';
+import PlaystationTart from './PlaystationTart';
+import KiiratPlaystation from './KiiratPlaystation';
+
 
 function HomeScreen({ navigation }) {
   return (
@@ -23,12 +24,17 @@ function HomeScreen({ navigation }) {
     >
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         
-
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('Retek')}>
+      <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8 }} onPress={() => navigation.navigate('Retek')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Pc alkatrészek</Text>
         </TouchableOpacity>
-
-
+        <Text></Text>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8 }} onPress={() => navigation.navigate('NintendoTart')}>
+          <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Nintendo tartozékok</Text>
+        </TouchableOpacity>
+        <Text></Text>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8 }} onPress={() => navigation.navigate('PlaystationTart')}>
+          <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Playstation tartozékok</Text>
+        </TouchableOpacity>
 
       </View>
     </LinearGradient>
@@ -52,43 +58,12 @@ function Root({ navigation }) {
     </Drawer.Navigator>
   );
 }
-//<Drawer.Screen name="Notifications" component={NotificationsScreen} />
-//<Drawer.Screen name="Próba" component={Proba_megjelenites} />
-//<Drawer.Screen name="Próba3" component={Proba3_megjelenites} />
-//<Drawer.Screen name="Pc alkatrészek" component={Proba2_megjelenites} ></Drawer.Screen>
-//<Drawer.Screen name="Pc alkatrészek2" component={Retek_megjelenites} ></Drawer.Screen>
-//<Drawer.Screen name="Mogyoró" component={Mogyoro} ></Drawer.Screen>
 
 function NotificationsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button onPress={() => navigation.goBack()} title="Go back home" />
     </View>
-  );
-}
-
-function Proba_megjelenites({ navigation }) {
-  return (
-    <Proba />
-  );
-}
-
-function Retek_megjelenites({ navigation }) {
-  return (
-    <Retek />
-  );
-}
-
-
-function Proba2_megjelenites({ navigation }) {
-  return (
-    <Proba2 />
-  );
-}
-
-function Proba3_megjelenites({ navigation }) {
-  return (
-    <Proba />
   );
 }
 
@@ -118,6 +93,15 @@ export default function App() {
         <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
         <Stack.Screen name="Kiirat" component={Kiirat} />
         <Stack.Screen name="Retek" component={Retek} />
+        
+        <Stack.Screen name="NintendoTart" component={NintendoTart} />
+        
+        <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} />
+        
+        <Stack.Screen name="PlaystationTart" component={PlaystationTart} />
+        
+        <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
+
         
 
       </Stack.Navigator>

@@ -9,15 +9,7 @@ const Kiirat = ({ route, navigation }) => {
   const { kep } = route.params;
   const { garancia } = route.params;
   const { ar } = route.params;
-  const [adatok, setAdatok] = useState([]);
-
-  const adatFelvitel = () => {
-
-    const ujAdatok = [nev, ar];
-    setAdatok(ujAdatok);
-
-    navigation.navigate('Kosarba', { adatok: ujAdatok });
-  };
+  
 
   return (
     <LinearGradient
@@ -34,6 +26,7 @@ const Kiirat = ({ route, navigation }) => {
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('Kosarba',{nev:nev,ar:ar})}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.goBack()}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
         </TouchableOpacity>
