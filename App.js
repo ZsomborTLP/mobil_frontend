@@ -16,7 +16,8 @@ import PlaystationTart from './PlaystationTart';
 import KiiratPlaystation from './KiiratPlaystation';
 
 
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation}) {
+  
   return (
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}
@@ -45,12 +46,16 @@ function HomeScreen({ navigation }) {
 
 
 
-function Root({ navigation }) {
+function Root({ navigation ,route }) {
+  //{vanAdat?  : null}
+  //const { vanAdat } = route.params ? route.params : { vanAdat: false };
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeScreen} ></Drawer.Screen>
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
       <Drawer.Screen name="Kosarba" component={Kosarba} ></Drawer.Screen>
+      
+    
       
 
 
@@ -93,16 +98,11 @@ export default function App() {
         <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
         <Stack.Screen name="Kiirat" component={Kiirat} />
         <Stack.Screen name="Retek" component={Retek} />
-        
-        <Stack.Screen name="NintendoTart" component={NintendoTart} />
-        
-        <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} />
-        
+        <Stack.Screen name="NintendoTart" component={NintendoTart} />        
+        <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} />        
         <Stack.Screen name="PlaystationTart" component={PlaystationTart} />
-        
         <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
 
-        
 
       </Stack.Navigator>
     </NavigationContainer>

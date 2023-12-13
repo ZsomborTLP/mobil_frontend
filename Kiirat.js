@@ -5,10 +5,13 @@ import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Kiirat = ({ route, navigation }) => {
+  
   const { nev } = route.params;
   const { kep } = route.params;
   const { garancia } = route.params;
   const { ar } = route.params;
+  
+
   
 
   return (
