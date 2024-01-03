@@ -6,14 +6,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
+import KiiratPlaystation from './KiiratPlaystation';
+import KiiratXbox from './KiiratXbox'
 import Kiirat from './Kiirat';
+import KiiratNintendo from './KiiratNintendo';
+
+
 import Retek from './Retek';
+import NintendoTart from './NintendoTart';
+import PlaystationTart from './PlaystationTart';
+import XboxTart from './XboxTart';
+
+
 import Felvitel from './felvitel';
 import Kosarba from './Kosarba';
-import NintendoTart from './NintendoTart';
-import KiiratNintendo from './KiiratNintendo';
-import PlaystationTart from './PlaystationTart';
-import KiiratPlaystation from './KiiratPlaystation';
+import Készítők from './Készítők';
+
 
 
 function HomeScreen({ navigation}) {
@@ -36,6 +44,10 @@ function HomeScreen({ navigation}) {
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8 }} onPress={() => navigation.navigate('PlaystationTart')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Playstation tartozékok</Text>
         </TouchableOpacity>
+        <Text></Text>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8 }} onPress={() => navigation.navigate('XboxTart')}>
+          <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Xbox tartozékok</Text>
+        </TouchableOpacity>
 
       </View>
     </LinearGradient>
@@ -55,10 +67,8 @@ function Root({ navigation ,route }) {
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
       <Drawer.Screen name="Kosarba" component={Kosarba} ></Drawer.Screen>
       
-    
-      
 
-
+      <Drawer.Screen name="Készítők" component={Készítők} ></Drawer.Screen>
 
     </Drawer.Navigator>
   );
@@ -96,13 +106,16 @@ export default function App() {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator initialRouteName="Root">
         <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
-        <Stack.Screen name="Kiirat" component={Kiirat} />
-        <Stack.Screen name="Retek" component={Retek} />
+        
+        <Stack.Screen name="Kiirat" component={Kiirat} />        
         <Stack.Screen name="NintendoTart" component={NintendoTart} />        
-        <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} />        
         <Stack.Screen name="PlaystationTart" component={PlaystationTart} />
-        <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
+        <Stack.Screen name="XboxTart" component={XboxTart} />
 
+        <Stack.Screen name="Retek" component={Retek} />
+        <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} /> 
+        <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
+        <Stack.Screen name="KiiratXbox" component={KiiratXbox} />
 
       </Stack.Navigator>
     </NavigationContainer>

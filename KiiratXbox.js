@@ -4,7 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const KiiratNintendo = ({ route, navigation }) => {
+const KiiratXbox = ({ route, navigation }) => {
   const { nev } = route.params;
   const { kep } = route.params;
   const { ev } = route.params;
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default KiiratNintendo;
+export default KiiratXbox;

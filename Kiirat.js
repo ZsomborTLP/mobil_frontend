@@ -19,10 +19,11 @@ const Kiirat = ({ route, navigation }) => {
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center' }}
     >
-      <Text style={{ fontSize: 25, marginTop: 35, marginLeft: 15, marginRight: 15 }}>{nev}</Text>
+
+      <Text style={{ fontSize: 25, marginTop: 35, marginLeft: 15, marginRight: 15,textAlign:'center' }}>{nev}</Text>
       <View style={styles.container}>
 
-        <Image source={{ uri: `${Ipcim.Ipcim}${kep}` }} style={{ width: 200, height: 200, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10, }} />
+        <Image source={{ uri: `${Ipcim.Ipcim}${kep}` }} style={{ width: 200, height: 200, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10 }} />
         <Text style={{ fontSize: 22, margin: 5, marginTop: 5 }}>Garancia {garancia} év</Text>
         <Text style={{ fontSize: 25, marginBottom: 25, margin: 5, textAlign: 'right' }}>Termék ára: {ar} Ft</Text>
 

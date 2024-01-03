@@ -9,7 +9,7 @@ const Proba2 = ({navigation}) => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch(`${Ipcim.Ipcim}Nintendotart`);
+      const response = await fetch(`${Ipcim.Ipcim}Xboxtart`);
       const json = await response.json();
       setData(json);
     } catch (error) {

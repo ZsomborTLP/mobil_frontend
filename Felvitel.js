@@ -59,7 +59,7 @@ export default function ImagePickerExample() {
 
       const response = await fetch(`${Ipcim.Ipcim}api/upload`, {
         method: 'POST',
-        body: createFormData(image, { bevitel1: bevitel1, bevitel2:bevitel2, bevitel3:bevitel3, bevitel4:bevitel4 }),
+        body: createFormData(image, { bevitel1: bevitel1, bevitel2:bevitel2, bevitel3:bevitel3, bevitel4:bevitel4, bevitel5:valasztott }),
         headers: {
           'Content-Type': 'multipart/form-data',
         },
