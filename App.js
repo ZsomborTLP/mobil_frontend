@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View,TouchableOpacity,Text } from 'react-native';
+import { View,TouchableOpacity,Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,6 +18,7 @@ import PlaystationTart from './PlaystationTart';
 import XboxTart from './XboxTart';
 
 
+import Megerosit from './Megerosit'
 import Felvitel from './felvitel';
 import Kosarba from './Kosarba';
 import Készítők from './Készítők';
@@ -74,13 +75,7 @@ function Root({ navigation ,route }) {
   );
 }
 
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
+
 
 
 
@@ -111,12 +106,14 @@ export default function App() {
         <Stack.Screen name="NintendoTart" component={NintendoTart} />        
         <Stack.Screen name="PlaystationTart" component={PlaystationTart} />
         <Stack.Screen name="XboxTart" component={XboxTart} />
+        
 
         <Stack.Screen name="Retek" component={Retek} />
         <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} /> 
         <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
         <Stack.Screen name="KiiratXbox" component={KiiratXbox} />
 
+        <Stack.Screen name="Megerosit" component={Megerosit} />
       </Stack.Navigator>
     </NavigationContainer>
   );

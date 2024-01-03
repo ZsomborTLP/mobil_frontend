@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity,Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Alert } from 'react-native';
 import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const Kosarba = ({ route }) => {
+const Kosarba = ({ route,navigation }) => {
     const { nev } = route.params;
     const { ar } = route.params;
     //const { adatok } = route.params;
@@ -22,19 +22,19 @@ const Kosarba = ({ route }) => {
         setAdatok(ujAdatok);
     };
     //
-    const megvetted =()=>{
+    const megvetted = () => {
         Alert.alert(
             'Vásárlás sikeres!',
             'Az általad kiválasztott terméket, termékeket átveheted Debrecen, Piac utca 8. szám alatt, 5-8 munkanapon belül.',
             [
-              {
-                text: 'Ok',
-                
-                style: 'cancel',
-              },
+                {
+                    text: 'Ok',
+
+                    style: 'cancel',
+                },
             ],
-            
-          );
+
+        );
     }
     return (
         <LinearGradient
@@ -46,7 +46,7 @@ const Kosarba = ({ route }) => {
                     <FlatList
                         data={adatok}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item,index }) => (
+                        renderItem={({ item, index }) => (
                             <View>
                                 <Text style={{ fontSize: 20, textAlign: 'center' }}>{item[0]}</Text>
                                 <Text style={{ fontSize: 20, textAlign: 'center' }}>{item[1]} FT</Text>
@@ -64,10 +64,10 @@ const Kosarba = ({ route }) => {
                     />
 
                 </View>
-                <View>
 
-                    <TouchableOpacity style={{ marginRight: 'auto', marginLeft: 'auto', backgroundColor: "green", width: 105, height: 45, padding: 10 }} onPress={megvetted}>
-                        <Text style={{ color: "white", textAlign: "center", fontSize: 15 }} >Vásárlás</Text>
+                <View>
+                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8,marginLeft:175,borderRadius:25 }} onPress={() => navigation.navigate('Megerosit')}>
+                        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vásárlás</Text>
                     </TouchableOpacity>
                     <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25, marginLeft: 25, marginTop: -50 }} />
                 </View>
