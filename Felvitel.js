@@ -59,12 +59,12 @@ export default function ImagePickerExample() {
 
       const response = await fetch(`${Ipcim.Ipcim}api/upload`, {
         method: 'POST',
-        body: createFormData(image, { bevitel1: bevitel1, bevitel2:bevitel2, bevitel3:bevitel3, bevitel4:bevitel4, bevitel5:valasztott }),
+        body: createFormData(image, { bevitel1: bevitel1, bevitel2: bevitel2, bevitel3: bevitel3, bevitel4: bevitel4, bevitel5: valasztott }),
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-
+      alert("Sikeres feltöltés!")
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -109,7 +109,7 @@ export default function ImagePickerExample() {
 
           {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
 
-          <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => pickImage()}>
+          <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={() => pickImage()}>
             <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kép kiválasztása</Text>
           </TouchableOpacity>
 
@@ -152,8 +152,8 @@ export default function ImagePickerExample() {
           />
 
 
-          <TouchableOpacity style={{ backgroundColor: "green", width: 105, height: 45, padding: 10 }} onPress={() => handleUploadPhoto()}>
-            <Text style={{ color: "white", textAlign: "center", fontSize: 15 }} >Feltöltés</Text>
+          <TouchableOpacity style={{ backgroundColor: "green", width: 125, height: 45, padding: 10, borderRadius: 5,marginTop:15}} onPress={() => handleUploadPhoto()}>
+            <Text style={{ color: "white", textAlign: "center", fontSize: 18,marginTop: -1 }} >Feltöltés</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

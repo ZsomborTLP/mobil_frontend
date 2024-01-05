@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, Image, Button, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, Image ,TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim';
 
-const Proba2 = ({ navigation }) => {
+const Hasznalttart = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getMovies = async () => {
     try {
-      const response = await fetch(`${Ipcim.Ipcim}Xboxtart`);
+      const response = await fetch(`${Ipcim.Ipcim}Hasznalttart`);
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -24,12 +24,12 @@ const Proba2 = ({ navigation }) => {
   }, []);
 
   return (
-
+    
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
-
+      
       <View style={{ flex: 1, padding: 24, }}>
 
         {isLoading ? (
@@ -41,19 +41,16 @@ const Proba2 = ({ navigation }) => {
             renderItem={({ item }) => (
               <View>
                 <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 5 }}>
-                  {item.alkatresz_info}
+                  {item.hasznalt_info}
                 </Text>
-                <Image source={{ uri: `${Ipcim.Ipcim}${item.alkatresz_kep}` }} style={{ width: 125, height: 125, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10 }} />
+                <Image source={{ uri: `${Ipcim.Ipcim}${item.hasznalt_kep}` }} style={{ width: 125, height: 125, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10 }} />
 
 
-                <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.alkatresz_ar} FT</Text>
+                <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.hasznalt_ar} FT</Text>
 
-                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 82, borderRadius: 5 }} onPress={() => navigation.navigate('KiiratXbox', { nev: item.alkatresz_info, kep: item.alkatresz_kep, ar: item.alkatresz_ar, ev: item.alkatresz_garancia })}>
-                  <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
-                </TouchableOpacity>
-
-
-
+            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 82 ,marginRight:80}} onPress={() => navigation.navigate('KiiratHasznalt', {nev:item.hasznalt_info, kep:item.hasznalt_kep, ar:item.hasznalt_ar, allapot:item.hasznalt_allapot })}>
+                <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
+            </TouchableOpacity>
 
 
                 <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1 }}></View>
@@ -63,14 +60,14 @@ const Proba2 = ({ navigation }) => {
           />
 
 
-
+          
         )}
 
       </View>
     </LinearGradient>
 
-
+    
   );
 };
 
-export default Proba2;
+export default Hasznalttart;

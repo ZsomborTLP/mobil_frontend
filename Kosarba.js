@@ -4,7 +4,7 @@ import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const Kosarba = ({ route,navigation }) => {
+const Kosarba = ({ route, navigation }) => {
     const { nev } = route.params;
     const { ar } = route.params;
     const [osszes, setOsszes] = useState(0);
@@ -13,7 +13,7 @@ const Kosarba = ({ route,navigation }) => {
     const [adatok, setAdatok] = useState([]);
 
     useEffect(() => {
-        
+
         setAdatok((elozoAdatok) => [...elozoAdatok, [nev, ar]]);
         setOsszes((elozoOsszeg) => elozoOsszeg + ar);
     }, [nev, ar]);
@@ -24,6 +24,14 @@ const Kosarba = ({ route,navigation }) => {
         setAdatok(ujAdatok);
         setOsszes((elozoOsszeg) => elozoOsszeg - ar);
     };
+
+    const urites=()=>{
+        const ujAdat=[]
+        setAdatok(ujAdat);
+        setOsszes(0)
+    }
+
+    
     //
     const megvetted = () => {
         Alert.alert(
@@ -50,7 +58,7 @@ const Kosarba = ({ route,navigation }) => {
                         data={adatok}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) => (
-                            
+
                             <View>
                                 <Text style={{ fontSize: 20, textAlign: 'center' }}>{item[0]}</Text>
                                 <Text style={{ fontSize: 20, textAlign: 'center' }}>{item[1]} FT</Text>
@@ -70,13 +78,18 @@ const Kosarba = ({ route,navigation }) => {
                 </View>
 
                 <View>
-                    <Text style={{marginBottom:20,fontSize:20,marginLeft:90,textAlign:'center'}}>Összes ár: {osszes}FT</Text>
+                    <Text style={{ marginBottom: 20, fontSize: 20, marginLeft: 90, textAlign: 'center' }}>Összes ár: {osszes}FT</Text>
                     <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25, marginLeft: 25, marginTop: -50 }} />
-                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8,marginLeft:175,borderRadius:25,marginTop:-50 }} onPress={() => navigation.navigate('Megerosit')}>
-                        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vásárlás</Text>
+                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -50,paddingTop:10 }} onPress={() => navigation.navigate('Megerosit')}>
+                        <Text style={{ color: "black", textAlign: "center", fontSize: 25 }} >Vásárlás</Text>
                     </TouchableOpacity>
 
-                    
+                    <Text></Text>
+
+                    <TouchableOpacity style={{ backgroundColor: "red", width: 145, height: 45, padding: 8, marginLeft: 25, borderRadius: 25 }} onPress={() =>urites()}>
+                        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosár ürítése!</Text>
+                    </TouchableOpacity>
+
                 </View>
             </ScrollView>
 

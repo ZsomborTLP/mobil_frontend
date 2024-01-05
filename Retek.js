@@ -1,11 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Picker } from '@react-native-picker/picker';
 import Ipcim from './Ipcim';
 
 const Proba2 = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [komponensdata, setKomponensData] = useState([]);
+  const [valasztott, valasztottKomponens] = useState();
+
+
+  const getKomponens = async () => {
+    try {
+      const response = await fetch(`${Ipcim.Ipcim}KomponensSeged`);
+      const json = await response.json();
+      setKomponensData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+    getMovies();
+  };
+
+  const keresfuggveny = async () => {
+    
+    var adatok = {
+      'bevitel1': valasztott
+    }
+
+    try {
+      const response = await fetch(`${Ipcim.Ipcim}keresszoveg`, {
+        method: "POST",
+        body: JSON.stringify(adatok),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+      }
+
+      );
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+
+  }
+
 
   const getMovies = async () => {
     try {
@@ -17,10 +59,13 @@ const Proba2 = ({ navigation }) => {
     } finally {
       setLoading(false);
     }
+
   };
 
   useEffect(() => {
-    getMovies();
+    getKomponens();
+    
+
   }, []);
 
   return (
@@ -29,6 +74,29 @@ const Proba2 = ({ navigation }) => {
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
+
+      <Picker style={{ backgroundColor: "#06c995", margin: 25, height: 50, width: 200 }}
+        selectedValue={valasztott}
+        onValueChange={(itemValue, itemIndex) =>
+          valasztottKomponens(itemValue)
+          
+        }>
+
+
+
+        {komponensdata.map((item) => {
+          return (
+
+            <Picker.Item label={item.komponens_nev} value={item.komponens_id} />
+          )
+        }
+        )}
+      </Picker>
+
+      <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 77, borderRadius: 5 }} onPress={() => keresfuggveny()}>
+                  <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Keresés</Text>
+                </TouchableOpacity>
+
 
       <View style={{ flex: 1, padding: 24, }}>
 
@@ -48,7 +116,7 @@ const Proba2 = ({ navigation }) => {
 
                 <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.alkatresz_ar} FT</Text>
 
-                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 77 }} onPress={() => navigation.navigate('Kiirat', { nev: item.alkatresz_info, kep: item.alkatresz_kep, garancia: item.alkatresz_garancia, ar: item.alkatresz_ar })}>
+                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 77, borderRadius: 5 }} onPress={() => navigation.navigate('Kiirat', { nev: item.alkatresz_info, kep: item.alkatresz_kep, garancia: item.alkatresz_garancia, ar: item.alkatresz_ar })}>
                   <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
                 </TouchableOpacity>
 

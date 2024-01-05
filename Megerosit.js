@@ -36,9 +36,11 @@ const Megerosit = ({ navigation }) => {
                             {
                                 text: 'Ok',
                                 style: 'cancel',
+                                
                             },
                         ],
                     );
+                    navigation.navigate("Home")
                 }
 
 
