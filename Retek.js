@@ -72,7 +72,7 @@ const Proba2 = ({ navigation }) => {
 
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      style={{ flex: 1}}
     >
 
       <Picker style={{ backgroundColor: "#06c995", margin: 25, height: 50, width: 200 }}
@@ -93,9 +93,9 @@ const Proba2 = ({ navigation }) => {
         )}
       </Picker>
 
-      <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 77, borderRadius: 5 }} onPress={() => keresfuggveny()}>
+      <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, marginLeft: 77, borderRadius: 5,marginLeft:245,marginTop:-77 }} onPress={() => keresfuggveny()}>
                   <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Keresés</Text>
-                </TouchableOpacity>
+      </TouchableOpacity>
 
 
       <View style={{ flex: 1, padding: 24, }}>

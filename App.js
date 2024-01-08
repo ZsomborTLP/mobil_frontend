@@ -5,12 +5,21 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import Jatekok from './Jatekok';
+import PcJatekok from './PcJatekok';
+import NintendoJatekok from './NintendoJatekok';
+import PlaystationJatekok from './PlaystationJatekok';
+import XboxJatekok from './XboxJatekok';
 
 import KiiratPlaystation from './KiiratPlaystation';
 import KiiratXbox from './KiiratXbox'
 import Kiirat from './Kiirat';
 import KiiratNintendo from './KiiratNintendo';
 import KiiratHasznalt from './KiiratHasznalt';
+import KiiratPcJatekok from './KiiratPcJatekok';
+import KiiratNintendoJatekok from './KiiratNintendoJatekok';
+import KiiratPlaystationJatekok from './KiiratPlaystationJatekok';
+import KiiratXboxJatekok from './KiiratXboxJatekok';
 
 
 import Retek from './Retek';
@@ -20,7 +29,6 @@ import XboxTart from './XboxTart';
 import Hasznalttart from './Hasznalttart';
 
 
-import Keresszoveg from './Keresesszoveg'
 import Megerosit from './Megerosit'
 import Felvitel from './felvitel';
 import Kosarba from './Kosarba';
@@ -80,10 +88,9 @@ function Root({ navigation, route }) {
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeScreen} ></Drawer.Screen>
+      <Drawer.Screen name="Jatekok" component={Jatekok} ></Drawer.Screen>
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
       <Drawer.Screen name="Kosarba" component={Kosarba} ></Drawer.Screen>
-      <Drawer.Screen name="Keresszoveg" component={Keresszoveg} ></Drawer.Screen>
-
       <Drawer.Screen name="Készítők" component={Készítők} ></Drawer.Screen>
 
     </Drawer.Navigator>
@@ -129,7 +136,18 @@ export default function App() {
         <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
         <Stack.Screen name="KiiratXbox" component={KiiratXbox} />
         <Stack.Screen name="KiiratHasznalt" component={KiiratHasznalt} />
+        
 
+
+        <Stack.Screen name="PcJatekok" component={PcJatekok} />
+        <Stack.Screen name="NintendoJatekok" component={NintendoJatekok} />
+        <Stack.Screen name="PlaystationJatekok" component={PlaystationJatekok} />
+        <Stack.Screen name="XboxJatekok" component={XboxJatekok} />
+
+        <Stack.Screen name="KiiratXboxJatekok" component={KiiratXboxJatekok} />
+        <Stack.Screen name="KiiratPcJatekok" component={KiiratPcJatekok} />        
+        <Stack.Screen name="KiiratNintendoJatekok" component={KiiratNintendoJatekok} />
+        <Stack.Screen name="KiiratPlaystationJatekok" component={KiiratPlaystationJatekok} />
 
         <Stack.Screen name="Megerosit" component={Megerosit} />
       </Stack.Navigator>
