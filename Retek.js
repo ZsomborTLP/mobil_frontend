@@ -83,7 +83,6 @@ const Proba2 = ({ navigation }) => {
         }>
 
 
-
         {komponensdata.map((item) => {
           return (
 
