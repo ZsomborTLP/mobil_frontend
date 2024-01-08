@@ -9,7 +9,10 @@ const KiiratXbox = ({ route, navigation }) => {
   const { kep } = route.params;
   const { ev } = route.params;
   const { ar } = route.params;
-
+  const atvisz=()=>{
+    navigation.navigate('Kosarba',{nev:nev,ar:ar});
+    navigation.navigate("Home")
+  }
 
   return (
     <LinearGradient
@@ -24,7 +27,7 @@ const KiiratXbox = ({ route, navigation }) => {
         <Text style={{ fontSize: 22, margin: 5, marginTop: 5 }}>Garancia {ev} év</Text>
         <Text style={{ fontSize: 25, marginBottom: 25, margin: 5, textAlign: 'right' }}>Termék ára: {ar} Ft</Text>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8,borderRadius:5 }} onPress={() => navigation.navigate('Kosarba', { nev: nev, ar: ar })}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8,borderRadius:5 }} onPress={() => atvisz()}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>
         </TouchableOpacity>
 

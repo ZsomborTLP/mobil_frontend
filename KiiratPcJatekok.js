@@ -12,6 +12,11 @@ const KiiratPcJatekok = ({ route, navigation }) => {
   const { ar } = route.params;
   const { trailer } = route.params;
 
+  const atvisz=()=>{
+    navigation.navigate('Kosarba',{nev:nev,ar:ar});
+    navigation.navigate("Home")
+  }
+
   return (
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}
@@ -28,7 +33,7 @@ const KiiratPcJatekok = ({ route, navigation }) => {
         <Text>Megjelenési év: {ev}</Text>
         <Text>Termék ára: {ar} Ft</Text>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('Kosarba', { nev: nev, ar: ar })}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={() => atvisz()}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>
         </TouchableOpacity>
 

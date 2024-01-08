@@ -38,12 +38,16 @@ import Készítők from './Készítők';
 
 function HomeScreen({ navigation }) {
 
+
+  
   return (
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('Retek')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Pc alkatrészek</Text>

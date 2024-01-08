@@ -4,6 +4,7 @@ import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 
+
 const Kosarba = ({ route, navigation }) => {
     const { nev } = route.params;
     const { ar } = route.params;
@@ -12,11 +13,20 @@ const Kosarba = ({ route, navigation }) => {
     //const [ujAdatok, setUjAdatok] = useState(adatok);
     const [adatok, setAdatok] = useState([]);
 
+
+
     useEffect(() => {
 
         setAdatok((elozoAdatok) => [...elozoAdatok, [nev, ar]]);
         setOsszes((elozoOsszeg) => elozoOsszeg + ar);
     }, [nev, ar]);
+
+    useEffect(() => {
+        if (ar === 0) {
+            urites();
+        }
+    }, [ar]);
+
 
     const torles = (index) => {
         const ujAdatok = [...adatok];
@@ -25,28 +35,14 @@ const Kosarba = ({ route, navigation }) => {
         setOsszes((elozoOsszeg) => elozoOsszeg - ar);
     };
 
-    const urites=()=>{
-        const ujAdat=[]
+    const urites = () => {
+        const ujAdat = []
         setAdatok(ujAdat);
         setOsszes(0)
     }
 
-    
-    //
-    const megvetted = () => {
-        Alert.alert(
-            'Vásárlás sikeres!',
-            'Az általad kiválasztott terméket, termékeket átveheted Debrecen, Piac utca 8. szám alatt, 5-8 munkanapon belül.',
-            [
-                {
-                    text: 'Ok',
 
-                    style: 'cancel',
-                },
-            ],
 
-        );
-    }
     return (
         <LinearGradient
             colors={['#AAD8E6', '#90EE90']}
@@ -80,13 +76,13 @@ const Kosarba = ({ route, navigation }) => {
                 <View>
                     <Text style={{ marginBottom: 20, fontSize: 20, marginLeft: 90, textAlign: 'center' }}>Összes ár: {osszes}FT</Text>
                     <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25, marginLeft: 25, marginTop: -50 }} />
-                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -50,paddingTop:10 }} onPress={() => navigation.navigate('Megerosit')}>
+                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -50, paddingTop: 10 }} onPress={() => { navigation.navigate('Megerosit') }}>
                         <Text style={{ color: "black", textAlign: "center", fontSize: 25 }} >Vásárlás</Text>
                     </TouchableOpacity>
 
                     <Text></Text>
 
-                    <TouchableOpacity style={{ backgroundColor: "red", width: 145, height: 45, padding: 8, marginLeft: 25, borderRadius: 25 }} onPress={() =>urites()}>
+                    <TouchableOpacity style={{ backgroundColor: "red", width: 145, height: 45, padding: 8, marginLeft: 25, borderRadius: 25 }} onPress={() => urites()}>
                         <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosár ürítése!</Text>
                     </TouchableOpacity>
 

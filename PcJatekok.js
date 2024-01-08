@@ -7,6 +7,7 @@ const PcJatekok = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
+  
   const getMovies = async () => {
     try {
       const response = await fetch(`${Ipcim.Ipcim}PcJatekok`);

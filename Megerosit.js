@@ -8,6 +8,8 @@ const Megerosit = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [telefonszam, setTelefonszam] = useState('');
 
+    const [ar,setAr]=useState(0);
+
     const megVasarlas = async () => {
         
         if (nev != "" && email != "" && telefonszam != "") {
@@ -40,7 +42,8 @@ const Megerosit = ({ navigation }) => {
                             },
                         ],
                     );
-                    navigation.navigate("Home")
+                    navigation.navigate("Kosarba",{ nev:nev ,ar:ar});
+                    navigation.navigate('Home')
                 }
 
 
