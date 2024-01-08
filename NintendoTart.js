@@ -59,7 +59,7 @@ const Proba2 = ({navigation}) => {
                 <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1 }}></View>
 
               </View>
-            )}
+            )} 
           />
 
 
