@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image, DefaultTheme, TouchableOpacity } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 

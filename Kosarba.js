@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';     
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Alert } from 'react-native';
 import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -41,6 +41,25 @@ const Kosarba = ({ route, navigation }) => {
         setOsszes(0)
     }
 
+    const vasarlas=()=>{
+        if(osszes!=0){
+            navigation.navigate("Megerosit")
+        }
+        else{
+            Alert.alert(
+                'A kosarad jelenleg üres!',
+                ``,
+                [
+                    {
+                        text: 'Ok',
+                        style: 'cancel',
+                        
+                    },
+                ],
+            );
+            navigation.navigate('Home')
+        }
+    }
 
 
     return (
@@ -76,7 +95,7 @@ const Kosarba = ({ route, navigation }) => {
                 <View>
                     <Text style={{ marginBottom: 20, fontSize: 20, marginLeft: 90, textAlign: 'center' }}>Összes ár: {osszes}FT</Text>
                     <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25, marginLeft: 25, marginTop: -50 }} />
-                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -50, paddingTop: 10 }} onPress={() => { navigation.navigate('Megerosit') }}>
+                    <TouchableOpacity style={{ backgroundColor: "#06c995", width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -50, paddingTop: 10 }} onPress={() => vasarlas()}>
                         <Text style={{ color: "black", textAlign: "center", fontSize: 25 }} >Vásárlás</Text>
                     </TouchableOpacity>
 
