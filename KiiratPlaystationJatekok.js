@@ -30,7 +30,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
       <View style={styles.container}>
         <Text style={{ fontSize: 20 }}>{nev}</Text>
         <Image source={{ uri: `${Ipcim.Ipcim}${kep}` }} style={{ width: 125, height: 125, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10, }} />
-        <Text>Megjelenési év: {ev}</Text>
+        <Text>Megjelenési év: {ev.split('T')[0]}</Text>
         <Text>Termék ára: {ar} Ft</Text>
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={() =>atvisz()}>

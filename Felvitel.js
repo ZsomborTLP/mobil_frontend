@@ -13,10 +13,12 @@ export default function ImagePickerExample() {
   const [bevitel2, setBevitel2] = useState('');
   const [bevitel3, setBevitel3] = useState('');
   const [bevitel4, setBevitel4] = useState('');
+  var [jelenlegidatum, setJelenlegidatum] = useState('');
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [valasztott, valasztottKomponens] = useState();
+  
 
   const getKomponens = async () => {
     try {
@@ -30,7 +32,14 @@ export default function ImagePickerExample() {
     }
   };
 
+
   useEffect(() => {
+    /*
+    var nap = new Date().getDate();
+    var honap = new Date().getMonth() + 1;
+    var ev = new Date().getFullYear();
+    setJelenlegidatum = (ev + '-' + honap + '-' + nap)
+*/
     getKomponens();
   }, []);
 
@@ -51,6 +60,8 @@ export default function ImagePickerExample() {
   };
 
   const handleUploadPhoto = async () => {
+    
+    
     try {
       if (!image) {
         console.log('Válassz egy képet először!');
@@ -152,8 +163,8 @@ export default function ImagePickerExample() {
           />
 
 
-          <TouchableOpacity style={{ backgroundColor: "green", width: 125, height: 45, padding: 10, borderRadius: 5,marginTop:15}} onPress={() => handleUploadPhoto()}>
-            <Text style={{ color: "white", textAlign: "center", fontSize: 18,marginTop: -1 }} >Feltöltés</Text>
+          <TouchableOpacity style={{ backgroundColor: "green", width: 125, height: 45, padding: 10, borderRadius: 5, marginTop: 15 }} onPress={() => handleUploadPhoto()}>
+            <Text style={{ color: "white", textAlign: "center", fontSize: 18, marginTop: -1 }} >Feltöltés</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
