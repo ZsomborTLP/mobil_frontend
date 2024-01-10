@@ -38,7 +38,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('PlaystationJatekok')}>
+        <TouchableOpacity style={{backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('PlaystationJatekok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
         </TouchableOpacity>
       </View>
