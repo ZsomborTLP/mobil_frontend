@@ -28,7 +28,7 @@ const Kiirat = ({ route, navigation }) => {
 
         <Image source={{ uri: `${Ipcim.Ipcim}${kep}` }} style={{ width: 200, height: 200, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10 }} />
         <Text style={{ fontSize: 22, margin: 5, marginTop: 5 }}>Garancia {garancia} év</Text>
-        <Text style={{ fontSize: 25, marginBottom: 25, margin: 5, textAlign: 'right' }}>Termék ára: {ar} Ft</Text>
+        <Text style={{ fontSize: 25, marginBottom: 25, margin: 5, textAlign: 'right'  }}>Termék ára: {ar} Ft</Text>
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 ,borderRadius:5}} onPress={() =>atvisz() }>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>

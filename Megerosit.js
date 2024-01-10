@@ -8,25 +8,25 @@ const Megerosit = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [telefonszam, setTelefonszam] = useState('');
 
-    const [ar,setAr]=useState(0);
+    const [ar, setAr] = useState(0);
 
     const megVasarlas = async () => {
-        
+
         if (nev != "" && email != "" && telefonszam != "") {
-            
+
             try {
-            
-                var adatok ={
+
+                var adatok = {
                     'nev': nev,
                     'email': email,
                     'telefonszam': telefonszam
                 }
-            
+
                 const response = await fetch(`${Ipcim.Ipcim}rendeles`, {
                     method: 'POST',
                     body: JSON.stringify(adatok),
-                    headers: {"Content-type": "application/json; charset=UTF-8"}
-                    
+                    headers: { "Content-type": "application/json; charset=UTF-8" }
+
                 });
 
 
@@ -38,11 +38,11 @@ const Megerosit = ({ navigation }) => {
                             {
                                 text: 'Ok',
                                 style: 'cancel',
-                                
+
                             },
                         ],
                     );
-                    navigation.navigate("Kosarba",{ nev:nev ,ar:ar});
+                    navigation.navigate("Kosarba", { nev: nev, ar: ar });
                     navigation.navigate('Home')
                 }
 
@@ -116,13 +116,14 @@ const Megerosit = ({ navigation }) => {
                         defaultValue={telefonszam}
                     />
                     <View>
-                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, borderRadius: 25, marginTop: 35 }} onPress={() => navigation.goBack()}>
+                        <TouchableOpacity style={{ backgroundColor: "green", width: 145, height: 57, padding: 8, borderRadius: 25, marginTop: 15 }} onPress={megVasarlas}>
+                            <Text style={{ color: "black", textAlign: "center", fontSize: 26, marginTop: 1 }} >Vásárlás</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, borderRadius: 25,marginLeft:11,marginTop:15 }} onPress={() => navigation.goBack()}>
                             <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, marginLeft: 145, borderRadius: 25, marginTop: 35 }} onPress={megVasarlas}>
-                            <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vásárlás</Text>
-                        </TouchableOpacity>
+
                     </View>
                 </View>
             </ScrollView>

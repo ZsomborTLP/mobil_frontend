@@ -54,6 +54,7 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
 
         <Text></Text>
+        
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('NintendoTart')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Nintendo tartozékok</Text>
@@ -68,7 +69,7 @@ function HomeScreen({ navigation }) {
         <Text></Text>
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('XboxTart')}>
-          <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Xbox tartozékok</Text>
+          <Text style={{ color: "black", textAlign: "center", fontSize: 18}} >Xbox tartozékok</Text>
         </TouchableOpacity>
 
         <Text></Text>

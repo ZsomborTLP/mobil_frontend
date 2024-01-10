@@ -30,14 +30,14 @@ const KiiratNintendoJatekok = ({ route, navigation }) => {
       <View style={styles.container}>
         <Text style={{ fontSize: 20 }}>{nev}</Text>
         <Image source={{ uri: `${Ipcim.Ipcim}${kep}` }} style={{ width: 125, height: 125, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10, }} />
-        <Text>Megjelenési év: {ev}</Text>
+        <Text>Megjelenési év: {ev.split('T')[0]}</Text>
         <Text>Termék ára: {ar} Ft</Text>
 
         <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={() => atvisz()}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8 }} onPress={() => navigation.navigate('NintendoJatekok')}>
+        <TouchableOpacity style={{backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('NintendoJatekok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
         </TouchableOpacity>
       </View>
