@@ -49,32 +49,30 @@ function HomeScreen({ navigation }) {
 
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('Retek')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65, padding: 18,borderTopRightRadius:20,borderTopLeftRadius:20,marginBottom:10  }} onPress={() => navigation.navigate('Retek')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Pc alkatrészek</Text>
         </TouchableOpacity>
 
-        <Text></Text>
+       
         
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('NintendoTart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995",width: 225, height: 65, padding: 18, borderRadius: 5,marginBottom:10  }} onPress={() => navigation.navigate('NintendoTart')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Nintendo tartozékok</Text>
         </TouchableOpacity>
 
-        <Text></Text>
+        
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('PlaystationTart')}>
+        <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 18,marginBottom:10,borderRadius: 5  }} onPress={() => navigation.navigate('PlaystationTart')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Playstation tartozékok</Text>
         </TouchableOpacity>
 
-        <Text></Text>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('XboxTart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65 ,padding: 18, borderRadius: 5,marginBottom:10  }} onPress={() => navigation.navigate('XboxTart')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18}} >Xbox tartozékok</Text>
         </TouchableOpacity>
 
-        <Text></Text>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 200, height: 45, padding: 8, borderRadius: 5 }} onPress={() => navigation.navigate('Hasznalttart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65, padding: 18, borderRadius: 5,borderBottomRightRadius:20,borderBottomLeftRadius:20 }} onPress={() => navigation.navigate('Hasznalttart')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Használt termékek</Text>
         </TouchableOpacity>
 

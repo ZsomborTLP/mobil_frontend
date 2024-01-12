@@ -28,11 +28,14 @@ const Kosarba = ({ route, navigation }) => {
     }, [ar]);
 
 
+    
+
     const torles = (index) => {
+        const toroltAr = adatok[index][1];
         const ujAdatok = [...adatok];
         ujAdatok.splice(index, 1);
         setAdatok(ujAdatok);
-        setOsszes((elozoOsszeg) => elozoOsszeg - ar);
+        setOsszes((elozoOsszeg) => elozoOsszeg - toroltAr);
     };
 
     const urites = () => {

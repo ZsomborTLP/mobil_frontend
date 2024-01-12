@@ -144,6 +144,8 @@ export default function ImagePickerExample() {
             placeholder="Pl: Kiss.Ábel@gmail.com"
             onChangeText={newText => setBevitel2(newText)}
             defaultValue={bevitel2}
+            keyboardType="email-address"
+            
           />
 
           <Text>Termék állapota:</Text>
@@ -160,6 +162,8 @@ export default function ImagePickerExample() {
             placeholder="Pl: 12500"
             onChangeText={newText => setBevitel4(newText)}
             defaultValue={bevitel4}
+            maxLength={7}
+            keyboardType='numeric'
           />
 
 

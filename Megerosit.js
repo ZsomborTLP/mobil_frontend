@@ -106,6 +106,7 @@ const Megerosit = ({ navigation }) => {
                         placeholder="Pl: Kiss.Ábel@gmail.com"
                         onChangeText={newText => setEmail(newText)}
                         defaultValue={email}
+                        keyboardType="email-address"
                     />
 
                     <Text style={{ marginTop: 10, fontSize: 25 }}>Telefonszám:</Text>
@@ -114,6 +115,8 @@ const Megerosit = ({ navigation }) => {
                         placeholder="Pl: 06362553580"
                         onChangeText={newText => setTelefonszam(newText)}
                         defaultValue={telefonszam}
+                        keyboardType='numeric'
+                        maxLength={11}
                     />
                     <View>
                         <TouchableOpacity style={{ backgroundColor: "green", width: 145, height: 57, padding: 8, borderRadius: 25, marginTop: 15 }} onPress={megVasarlas}>

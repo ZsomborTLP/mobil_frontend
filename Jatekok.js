@@ -11,20 +11,20 @@ const Jatekok = ({ navigation }) => {
     >
     <View style={{flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
      
-    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8,  }} onPress={() => navigation.navigate('PcJatekok')}>
-        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Pc játékok</Text>
+    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 17,borderTopRightRadius:20,borderTopLeftRadius:20,marginBottom:10  }} onPress={() => navigation.navigate('PcJatekok')}>
+        <Text style={{ color: "black", textAlign: "center", fontSize: 21 }} >Pc játékok</Text>
     </TouchableOpacity>
-    <Text></Text>
-    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8,  }} onPress={() => navigation.navigate('NintendoJatekok')}>
-        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Nintendo játékok</Text>
+    
+    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 17,marginBottom:10,borderRadius: 5  }} onPress={() => navigation.navigate('NintendoJatekok')}>
+        <Text style={{ color: "black", textAlign: "center", fontSize: 21 }} >Nintendo játékok</Text>
     </TouchableOpacity>
-    <Text></Text>
-    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8,  }} onPress={() => navigation.navigate('PlaystationJatekok')}>
-        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Playstation játékok</Text>
+    
+    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 17,marginBottom:10,borderRadius: 5  }} onPress={() => navigation.navigate('PlaystationJatekok')}>
+        <Text style={{ color: "black", textAlign: "center", fontSize: 21 }} >Playstation játékok</Text>
     </TouchableOpacity>
-    <Text></Text>
-    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8,  }} onPress={() => navigation.navigate('XboxJatekok')}>
-        <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Xbox játékok</Text>
+    
+    <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 17,borderBottomLeftRadius:20,borderBottomRightRadius:20  }} onPress={() => navigation.navigate('XboxJatekok')}>
+        <Text style={{ color: "black", textAlign: "center", fontSize: 21 }} >Xbox játékok</Text>
     </TouchableOpacity>
     </View>
     </LinearGradient>
