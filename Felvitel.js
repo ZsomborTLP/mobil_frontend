@@ -15,10 +15,15 @@ export default function ImagePickerExample() {
   const [bevitel4, setBevitel4] = useState('');
   var [jelenlegidatum, setJelenlegidatum] = useState('');
 
+  var date = new Date().getDate();
+  var month = new Date().getMonth() + 1;
+  var year = new Date().getFullYear();
+  var datum = year + '-' + month + '-' + date;
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [valasztott, valasztottKomponens] = useState();
-  
+
 
   const getKomponens = async () => {
     try {
@@ -41,6 +46,7 @@ export default function ImagePickerExample() {
     setJelenlegidatum = (ev + '-' + honap + '-' + nap)
 */
     getKomponens();
+    
   }, []);
 
   const createFormData = (photo, body = {}) => {
@@ -59,9 +65,12 @@ export default function ImagePickerExample() {
     return data;
   };
 
+
+
+
   const handleUploadPhoto = async () => {
-    
-    
+
+
     try {
       if (!image) {
         console.log('Válassz egy képet először!');
@@ -70,7 +79,7 @@ export default function ImagePickerExample() {
 
       const response = await fetch(`${Ipcim.Ipcim}api/upload`, {
         method: 'POST',
-        body: createFormData(image, { bevitel1: bevitel1, bevitel2: bevitel2, bevitel3: bevitel3, bevitel4: bevitel4, bevitel5: valasztott }),
+        body: createFormData(image, { bevitel1: bevitel1, datum: datum, bevitel2: bevitel2, bevitel3: bevitel3, bevitel4: bevitel4, bevitel5: valasztott }),
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -145,7 +154,7 @@ export default function ImagePickerExample() {
             onChangeText={newText => setBevitel2(newText)}
             defaultValue={bevitel2}
             keyboardType="email-address"
-            
+
           />
 
           <Text>Termék állapota:</Text>

@@ -28,7 +28,8 @@ import PlaystationTart from './PlaystationTart';
 import XboxTart from './XboxTart';
 import Hasznalttart from './Hasznalttart';
 
-
+import Comment from './Comment';
+import Hozzaszolas from './Hozzaszolas';
 import Megerosit from './Megerosit'
 import Felvitel from './felvitel';
 import Kosarba from './Kosarba';
@@ -94,7 +95,9 @@ function Root({ navigation, route }) {
       <Drawer.Screen name="Jatekok" component={Jatekok} ></Drawer.Screen>
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
       <Drawer.Screen name="Kosarba" component={Kosarba} ></Drawer.Screen>
+      <Drawer.Screen name="Comment" component={Comment} ></Drawer.Screen>
       <Drawer.Screen name="Készítők" component={Készítők} ></Drawer.Screen>
+
 
     </Drawer.Navigator>
   );
@@ -151,7 +154,10 @@ export default function App() {
         <Stack.Screen name="KiiratPcJatekok" component={KiiratPcJatekok} />        
         <Stack.Screen name="KiiratNintendoJatekok" component={KiiratNintendoJatekok} />
         <Stack.Screen name="KiiratPlaystationJatekok" component={KiiratPlaystationJatekok} />
+      
 
+        <Stack.Screen name="Comment" component={Comment} />
+        <Stack.Screen name="Hozzaszolas" component={Hozzaszolas} />
         <Stack.Screen name="Megerosit" component={Megerosit} />
       </Stack.Navigator>
     </NavigationContainer>

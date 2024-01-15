@@ -47,6 +47,7 @@ const Kosarba = ({ route, navigation }) => {
     const vasarlas=()=>{
         if(osszes!=0){
             navigation.navigate("Megerosit")
+            
         }
         else{
             Alert.alert(
