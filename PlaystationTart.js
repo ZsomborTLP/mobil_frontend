@@ -48,7 +48,7 @@ const Proba2 = ({ navigation }) => {
 
                 <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.alkatresz_ar} FT</Text>
 
-                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 85, borderRadius: 5 }} onPress={() => navigation.navigate('KiiratPlaystation', { nev: item.alkatresz_info, kep: item.alkatresz_kep, ar: item.alkatresz_ar, ev: item.alkatresz_garancia })}>
+                <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 85, borderRadius: 5 }} onPress={() => navigation.navigate('PlaystationTartozék', { nev: item.alkatresz_info, kep: item.alkatresz_kep, ar: item.alkatresz_ar, ev: item.alkatresz_garancia })}>
                   <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
                 </TouchableOpacity>
 

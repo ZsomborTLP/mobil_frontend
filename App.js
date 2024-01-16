@@ -6,33 +6,34 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import Jatekok from './Jatekok';
-import PcJatekok from './PcJatekok';
-import NintendoJatekok from './NintendoJatekok';
-import PlaystationJatekok from './PlaystationJatekok';
-import XboxJatekok from './XboxJatekok';
+import PC_Játékok from './PcJatekok';
+import Nintendo_Játékok from './NintendoJatekok';
+import Playstation_Játékok from './PlaystationJatekok';
+import Xbox_Játékok from './XboxJatekok';
 
-import KiiratPlaystation from './KiiratPlaystation';
-import KiiratXbox from './KiiratXbox'
-import Kiirat from './Kiirat';
-import KiiratNintendo from './KiiratNintendo';
-import KiiratHasznalt from './KiiratHasznalt';
-import KiiratPcJatekok from './KiiratPcJatekok';
-import KiiratNintendoJatekok from './KiiratNintendoJatekok';
-import KiiratPlaystationJatekok from './KiiratPlaystationJatekok';
-import KiiratXboxJatekok from './KiiratXboxJatekok';
+import PlaystationTartozék from './KiiratPlaystation';//KiiratPlaystation
+import XboxTartozék from './KiiratXbox';//KiiratXbox
+import Alkatrész from './Kiirat';//Kiirat
+import NintendoTartozék from './KiiratNintendo';//KiiratNintendo
+import HasználtTartozék from './KiiratHasznalt';//KiiratHasznalt
+
+import Játék_PC from './KiiratPcJatekok';//KiiratPcJatekok
+import Játék_Nintendo from './KiiratNintendoJatekok';//KiiratNintendoJatekok
+import Játék_Playstation from './KiiratPlaystationJatekok';//KiiratPlaystationJatekok
+import Játék_Xbox from './KiiratXboxJatekok';
 
 
-import Retek from './Retek';
-import NintendoTart from './NintendoTart';
-import PlaystationTart from './PlaystationTart';
-import XboxTart from './XboxTart';
-import Hasznalttart from './Hasznalttart';
+import Alkatrészek from './Retek';//Retek
+import NintendoTartozékok from './NintendoTart';//NintendoTart
+import PlaystationTartozékok from './PlaystationTart';//PlaystationTart
+import XboxTartozékok from './XboxTart';//XboxTart
+import HasználtTartozékok from './Hasznalttart';//Hasznalttart
 
 import Comment from './Comment';
 import Hozzaszolas from './Hozzaszolas';
 import Megerosit from './Megerosit'
 import Felvitel from './felvitel';
-import Kosarba from './Kosarba';
+import Kosárba from './Kosarba';
 import Készítők from './Készítők';
 
 
@@ -50,30 +51,30 @@ function HomeScreen({ navigation }) {
 
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65, padding: 18,borderTopRightRadius:20,borderTopLeftRadius:20,marginBottom:10  }} onPress={() => navigation.navigate('Retek')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65, padding: 18,borderTopRightRadius:20,borderTopLeftRadius:20,marginBottom:10  }} onPress={() => navigation.navigate('Alkatrészek')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Pc alkatrészek</Text>
         </TouchableOpacity>
 
        
         
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995",width: 225, height: 65, padding: 18, borderRadius: 5,marginBottom:10  }} onPress={() => navigation.navigate('NintendoTart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995",width: 225, height: 65, padding: 18, borderRadius: 5,marginBottom:10  }} onPress={() => navigation.navigate('NintendoTartozékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Nintendo tartozékok</Text>
         </TouchableOpacity>
 
         
 
-        <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 18,marginBottom:10,borderRadius: 5  }} onPress={() => navigation.navigate('PlaystationTart')}>
+        <TouchableOpacity style={{ textAlign:'center', backgroundColor: "#06c995", width: 225, height: 65, padding: 18,marginBottom:10,borderRadius: 5  }} onPress={() => navigation.navigate('PlaystationTartozékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Playstation tartozékok</Text>
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65 ,padding: 18, borderRadius: 5,marginBottom:10  }} onPress={() => navigation.navigate('XboxTart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65 ,padding: 18, borderRadius: 5,marginBottom:10  }} onPress={() => navigation.navigate('XboxTartozékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18}} >Xbox tartozékok</Text>
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65, padding: 18, borderRadius: 5,borderBottomRightRadius:20,borderBottomLeftRadius:20 }} onPress={() => navigation.navigate('Hasznalttart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 225, height: 65, padding: 18, borderRadius: 5,borderBottomRightRadius:20,borderBottomLeftRadius:20 }} onPress={() => navigation.navigate('HasználtTartozékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Használt termékek</Text>
         </TouchableOpacity>
 
@@ -94,7 +95,7 @@ function Root({ navigation, route }) {
       <Drawer.Screen name="Home" component={HomeScreen} ></Drawer.Screen>
       <Drawer.Screen name="Jatekok" component={Jatekok} ></Drawer.Screen>
       <Drawer.Screen name="Felvitel" component={Felvitel} ></Drawer.Screen>
-      <Drawer.Screen name="Kosarba" component={Kosarba} ></Drawer.Screen>
+      <Drawer.Screen name="Kosárba" component={Kosárba} ></Drawer.Screen>
       <Drawer.Screen name="Comment" component={Comment} ></Drawer.Screen>
       <Drawer.Screen name="Készítők" component={Készítők} ></Drawer.Screen>
 
@@ -130,30 +131,30 @@ export default function App() {
       <Stack.Navigator initialRouteName="Root">
         <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
 
-        <Stack.Screen name="Kiirat" component={Kiirat} />
-        <Stack.Screen name="NintendoTart" component={NintendoTart} />
-        <Stack.Screen name="PlaystationTart" component={PlaystationTart} />
-        <Stack.Screen name="XboxTart" component={XboxTart} />
-        <Stack.Screen name="Hasznalttart" component={Hasznalttart} />
+        <Stack.Screen name="Alkatrész" component={Alkatrész} />
+        <Stack.Screen name="NintendoTartozékok" component={NintendoTartozékok} />
+        <Stack.Screen name="PlaystationTartozékok" component={PlaystationTartozékok} />
+        <Stack.Screen name="XboxTartozékok" component={XboxTartozékok} />
+        <Stack.Screen name="HasználtTartozékok" component={HasználtTartozékok} />
 
 
-        <Stack.Screen name="Retek" component={Retek} />
-        <Stack.Screen name="KiiratNintendo" component={KiiratNintendo} />
-        <Stack.Screen name="KiiratPlaystation" component={KiiratPlaystation} />
-        <Stack.Screen name="KiiratXbox" component={KiiratXbox} />
-        <Stack.Screen name="KiiratHasznalt" component={KiiratHasznalt} />
+        <Stack.Screen name="Alkatrészek" component={Alkatrészek} />
+        <Stack.Screen name="NintendoTartozék" component={NintendoTartozék} />
+        <Stack.Screen name="PlaystationTartozék" component={PlaystationTartozék} />
+        <Stack.Screen name="XboxTartozék" component={XboxTartozék} />
+        <Stack.Screen name="HasználtTartozék" component={HasználtTartozék} />
         
 
 
-        <Stack.Screen name="PcJatekok" component={PcJatekok} />
-        <Stack.Screen name="NintendoJatekok" component={NintendoJatekok} />
-        <Stack.Screen name="PlaystationJatekok" component={PlaystationJatekok} />
-        <Stack.Screen name="XboxJatekok" component={XboxJatekok} />
+        <Stack.Screen name="PC_Játékok" component={PC_Játékok} />
+        <Stack.Screen name="Nintendo_Játékok" component={Nintendo_Játékok} />
+        <Stack.Screen name="Playstation_Játékok" component={Playstation_Játékok} />
+        <Stack.Screen name="Xbox_Játékok" component={Xbox_Játékok} />
 
-        <Stack.Screen name="KiiratXboxJatekok" component={KiiratXboxJatekok} />
-        <Stack.Screen name="KiiratPcJatekok" component={KiiratPcJatekok} />        
-        <Stack.Screen name="KiiratNintendoJatekok" component={KiiratNintendoJatekok} />
-        <Stack.Screen name="KiiratPlaystationJatekok" component={KiiratPlaystationJatekok} />
+        <Stack.Screen name="Játék_Xbox" component={Játék_Xbox} />
+        <Stack.Screen name="Játék_PC" component={Játék_PC} />        
+        <Stack.Screen name="Játék_Nintendo" component={Játék_Nintendo} />
+        <Stack.Screen name="Játék_Playstation" component={Játék_Playstation} />
       
 
         <Stack.Screen name="Comment" component={Comment} />

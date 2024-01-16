@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, Button, Image, DefaultTheme, TouchableOpacity }
 import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const KiiratNintendo = ({ route, navigation }) => {
+const NintendoTartozék = ({ route, navigation }) => {
   const { nev } = route.params;
   const { kep } = route.params;
   const { ev } = route.params;
   const { ar } = route.params;
   const atvisz=()=>{
-    navigation.navigate('Kosarba',{nev:nev,ar:ar});
+    navigation.navigate('Kosárba',{nev:nev,ar:ar});
     navigation.navigate("Home")
   }
 
@@ -30,7 +30,7 @@ const KiiratNintendo = ({ route, navigation }) => {
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('NintendoTart')}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('NintendoTartozékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }}>Vissza</Text>
         </TouchableOpacity>
 
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default KiiratNintendo;
+export default NintendoTartozék;

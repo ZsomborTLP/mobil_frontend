@@ -13,8 +13,12 @@ const Kiirat = ({ route, navigation }) => {
   
 
   const atvisz=()=>{
-    navigation.navigate('Kosarba',{nev:nev,ar:ar});
-    navigation.navigate("Home")
+    navigation.navigate('Kosárba',{nev:nev,ar:ar});
+    setTimeout(() => {
+      navigation.navigate('Home')
+    }, 0.00005);
+    
+    
   }
 
   return (

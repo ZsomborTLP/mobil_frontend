@@ -13,7 +13,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
   const { trailer } = route.params;
 
   const atvisz=()=>{
-    navigation.navigate('Kosarba',{nev:nev,ar:ar});
+    navigation.navigate('Kosárba',{nev:nev,ar:ar});
     navigation.navigate("Home")
   }
 
@@ -38,7 +38,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('PlaystationJatekok')}>
+        <TouchableOpacity style={{backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('Playstation_Játékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
         </TouchableOpacity>
       </View>

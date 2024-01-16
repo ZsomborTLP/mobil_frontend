@@ -13,7 +13,7 @@ const KiiratPcJatekok = ({ route, navigation }) => {
   const { trailer } = route.params;
 
   const atvisz=()=>{
-    navigation.navigate('Kosarba',{nev:nev,ar:ar});
+    navigation.navigate('Kosárba',{nev:nev,ar:ar});
     navigation.navigate("Home")
   }
 
@@ -37,7 +37,7 @@ const KiiratPcJatekok = ({ route, navigation }) => {
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kosárba tesz</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('PcJatekok')}>
+        <TouchableOpacity style={{backgroundColor: "#06c995", width: 135, height: 45, padding: 8 ,borderRadius:5,marginTop:15}} onPress={() => navigation.navigate('Pc_Játékok')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
         </TouchableOpacity>
       </View>

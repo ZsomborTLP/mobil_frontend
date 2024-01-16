@@ -13,48 +13,61 @@ const Megerosit = ({ navigation }) => {
     const megVasarlas = async () => {
 
         if (nev != "" && email != "" && telefonszam != "") {
+            if (email.includes('@gmail.com') || email.includes('@freemail.com') || email.includes('citromail.hu')) {
+                try {
 
-            try {
+                    var adatok = {
+                        'nev': nev,
+                        'email': email,
+                        'telefonszam': telefonszam
+                    }
 
-                var adatok = {
-                    'nev': nev,
-                    'email': email,
-                    'telefonszam': telefonszam
+                    const response = await fetch(`${Ipcim.Ipcim}rendeles`, {
+                        method: 'POST',
+                        body: JSON.stringify(adatok),
+                        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+                    });
+
+
+                    if (response.ok) {
+                        Alert.alert(
+                            'Vásárlás sikeres!',
+                            `További információkkal értesítjük önt emailben.`,
+                            [
+                                {
+                                    text: 'Ok',
+                                    style: 'cancel',
+
+                                },
+                            ],
+                        );
+                        navigation.navigate("Kosárba", { nev: nev, ar: ar });
+                        navigation.navigate('Home')
+                    }
+
+
+
+
                 }
-
-                const response = await fetch(`${Ipcim.Ipcim}rendeles`, {
-                    method: 'POST',
-                    body: JSON.stringify(adatok),
-                    headers: { "Content-type": "application/json; charset=UTF-8" }
-
-                });
-
-
-                if (response.ok) {
+                catch (error) {
+                    console.error('Hiba a vásárlás során:', error);
                     Alert.alert(
-                        'Vásárlás sikeres!',
-                        `További információkkal értesítjük önt emailben.`,
+                        'Hiba történt a vásárlás során',
+                        'Kérjük, próbálja újra később',
                         [
                             {
                                 text: 'Ok',
                                 style: 'cancel',
-
                             },
                         ],
                     );
-                    navigation.navigate("Kosarba", { nev: nev, ar: ar });
-                    navigation.navigate('Home')
                 }
-
-
-
-
             }
-            catch (error) {
-                console.error('Hiba a vásárlás során:', error);
+            else {
                 Alert.alert(
                     'Hiba történt a vásárlás során',
-                    'Kérjük, próbálja újra később',
+                    'Kérjük, vásárlás során érvényes email címet adjon meg! (gmail,citromail,freemail)',
                     [
                         {
                             text: 'Ok',
@@ -122,7 +135,7 @@ const Megerosit = ({ navigation }) => {
                         <TouchableOpacity style={{ backgroundColor: "green", width: 145, height: 57, padding: 8, borderRadius: 25, marginTop: 15 }} onPress={megVasarlas}>
                             <Text style={{ color: "black", textAlign: "center", fontSize: 26, marginTop: 1 }} >Vásárlás</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, borderRadius: 25,marginLeft:11,marginTop:15 }} onPress={() => navigation.goBack()}>
+                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, borderRadius: 25, marginLeft: 11, marginTop: 15 }} onPress={() => navigation.goBack()}>
                             <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
                         </TouchableOpacity>
 

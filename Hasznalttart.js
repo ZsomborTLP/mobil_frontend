@@ -48,7 +48,7 @@ const Hasznalttart = ({navigation}) => {
 
                 <Text style={{ textAlign: 'center', fontSize: 20 }}>{item.hasznalt_ar} FT</Text>
 
-            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 82 ,marginRight:80}} onPress={() => navigation.navigate('KiiratHasznalt', {nev:item.hasznalt_info, kep:item.hasznalt_kep, ar:item.hasznalt_ar, allapot:item.hasznalt_allapot })}>
+            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 82 ,marginRight:80}} onPress={() => navigation.navigate('HasználtTartozék', {nev:item.hasznalt_info, kep:item.hasznalt_kep, ar:item.hasznalt_ar, allapot:item.hasznalt_allapot })}>
                 <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
             </TouchableOpacity>
 

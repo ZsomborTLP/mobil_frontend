@@ -49,7 +49,7 @@ const PcJatekok = ({navigation}) => {
 
                 <Text style={{textAlign: 'center', fontSize: 20 }}>{item.jatekok_ar} FT</Text>
 
-            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 67, borderRadius: 5 }} onPress={() => navigation.navigate('KiiratPcJatekok', {nev:item.jatekok_nev, kep:item.jatekok_kep, ar:item.jatekok_ar, ev:item.jatekok_megjelenes, trailer:item.jatekok_trailer })}>
+            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 67, borderRadius: 5 }} onPress={() => navigation.navigate('Játék_PC', {nev:item.jatekok_nev, kep:item.jatekok_kep, ar:item.jatekok_ar, ev:item.jatekok_megjelenes, trailer:item.jatekok_trailer })}>
                 <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
             </TouchableOpacity>
 

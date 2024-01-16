@@ -9,7 +9,7 @@ const KiiratXbox = ({ route, navigation }) => {
   const { ev } = route.params;
   const { ar } = route.params;
   const atvisz=()=>{
-    navigation.navigate('Kosarba',{nev:nev,ar:ar});
+    navigation.navigate('Kosárba',{nev:nev,ar:ar});
     navigation.navigate("Home")
   }
 
