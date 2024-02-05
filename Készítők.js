@@ -18,7 +18,7 @@ const Készítők = () => {
                 <Text style={{textAlign:'center',fontSize:25}}>és</Text>
                 <Text style={{fontSize:30,textAlign:'center'}}>Faur Zsombor</Text>
             </View>
-            <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25, marginLeft: 25, marginTop: -50 }} />
+            <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25 }} />
         </LinearGradient>
 
 
