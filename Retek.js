@@ -134,12 +134,6 @@ const Proba2 = ({ navigation }) => {
             </View>
           )}
         />
-
-        
-        
-
-
-
         )}
 
       </View>
