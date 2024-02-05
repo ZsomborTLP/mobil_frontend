@@ -87,7 +87,16 @@ const KiiratXboxJatekok = ({ route, navigation }) => {
         }
       }
       else {
-        alert("A neved ne tartalmazzon számot!")
+        Alert.alert(
+          '',
+          'A neved ne tartalmazzon számot!',
+          [
+            {
+              text: 'Ok',
+              style: 'cancel',
+            },
+          ],
+        );
       }
 
     }

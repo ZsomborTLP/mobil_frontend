@@ -103,7 +103,17 @@ const Megerosit = ({ navigation, route }) => {
                 }
             }
             else{
-                alert("A neved ne tartalmazzon számot!")
+                Alert.alert(
+                    '',
+                    'A neved ne tartalmazzon számot!',
+                    [
+                      {
+                        text: 'Ok',
+                        style: 'cancel',
+                      },
+                    ],
+                  );
+                
             }
         }
         

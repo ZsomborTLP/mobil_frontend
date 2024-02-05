@@ -88,9 +88,18 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
 
 
       else {
-        alert("A neved ne tartalmazzon számot!")
+        Alert.alert(
+          '',
+          'A neved ne tartalmazzon számot!',
+          [
+            {
+              text: 'Ok',
+              style: 'cancel',
+            },
+          ],
+        );
       }
-      
+
     }
     else {
       Alert.alert(
@@ -105,7 +114,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
 
       );
     }
-    
+
   }
 
   useEffect(() => {
