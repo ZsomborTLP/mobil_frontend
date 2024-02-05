@@ -30,7 +30,7 @@ const Proba2 = ({ navigation }) => {
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
 
-      <View style={{ flex: 1, padding: 24, }}>
+      <View style={{ flex: 1, padding: 24,marginTop:-20,marginBottom:-20 }}>
 
         {isLoading ? (
           <ActivityIndicator />
@@ -39,7 +39,7 @@ const Proba2 = ({ navigation }) => {
             data={data}
             keyExtractor={({ alkatresz_id }) => alkatresz_id}
             renderItem={({ item }) => (
-              <View>
+              <View key={item.alkatresz_id}>
                 <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 5 }}>
                   {item.alkatresz_info}
                 </Text>
@@ -56,7 +56,7 @@ const Proba2 = ({ navigation }) => {
 
 
 
-                <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1 }}></View>
+                <View style={{ marginTop: 15, marginBottom: 20, borderColor: 'gray', borderWidth: 1 }}></View>
 
               </View>
             )}

@@ -5,24 +5,20 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const Kosárba = ({ route, navigation }) => {
-  const { nev, ar } = route.params || { nev: '', ar: 0 };
-
+  const { nev, ar,seged } = route.params || { nev: '', ar: 0,seged:0 };
   const [osszes, setOsszes] = useState(ar);
   const [adatok, setAdatok] = useState([]);
-
-
-  useEffect(() => {
-    urites()
-  }, [],)
+  
+  //alert(nev)
 
 
   useEffect(() => {
     if (nev !== '' && ar !== 0) {
-
+      //alert(seged)
       setAdatok((elozoAdatok) => [...elozoAdatok, { nev, ar }]);
       setOsszes((elozoOsszeg) => elozoOsszeg + ar);
     }
-  }, [nev, ar]);
+  }, [nev, ar, seged]);
 
   const torles = (index) => {
     const toroltAr = adatok[index].ar; 
@@ -33,26 +29,44 @@ const Kosárba = ({ route, navigation }) => {
   };
 
   const urites = () => {
-    if (osszes == 0) {
       Alert.alert(
-        'A kosarad jelenleg üres!',
         '',
+        'Biztos ki üríted a kosarad? ',
         [
           {
-            text: 'Ok',
+            text: 'Igen',
+            onPress: () => veglegesurites(),
             style: 'cancel',
+            
           },
-        ],
-      );
-      navigation.navigate('Home');
-    }
-    setAdatok([]);
-    setOsszes(0);
-  };
+          {
+            text: 'Nem',
+            style: 'cancel',
+          }
+        ],)
+      };
+
+const veglegesurites=()=>{
+  if (osszes == 0) {
+    Alert.alert(
+      'A kosarad jelenleg üres!',
+      '',
+      [
+        {
+          text: 'Ok',
+          style: 'cancel',
+        },
+      ],
+    );
+    navigation.navigate('Home');
+  }
+  setAdatok([]);
+  setOsszes(0);
+}
 
   const vasarlas = () => {
     if (osszes !== 0) {
-      navigation.navigate('Megerosit');
+      navigation.navigate('Megerosit',{osszes:osszes});
     } else {
       Alert.alert(
         'A kosarad jelenleg üres!',
@@ -79,7 +93,7 @@ const Kosárba = ({ route, navigation }) => {
             data={adatok}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
-              <View>
+              <View key={item.id}>
                 <Text style={{ fontSize: 20, textAlign: 'center' }}>{item.nev}</Text>
                 <Text style={{ fontSize: 20, textAlign: 'center' }}>{item.ar} FT</Text>
                 <TouchableOpacity
@@ -87,7 +101,7 @@ const Kosárba = ({ route, navigation }) => {
                   onPress={() => torles(index)}>
                   <Text style={{ color: 'white', textAlign: 'center', fontSize: 8 }} >Törlés</Text>
                 </TouchableOpacity>
-                <View style={{ marginTop: 15, marginBottom: 10, borderColor: 'gray', borderWidth: 1 }}></View>
+                <View style={{ marginTop: 10 , marginBottom: 10, borderColor: 'gray', borderWidth: 1 }}></View>
               </View>
             )}
           />

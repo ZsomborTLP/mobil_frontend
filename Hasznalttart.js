@@ -30,16 +30,16 @@ const Hasznalttart = ({navigation}) => {
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       
-      <View style={{ flex: 1, padding: 24, }}>
+      <View style={{ flex: 1, padding: 24,marginBottom:-20,marginTop:-20 }}>
 
         {isLoading ? (
           <ActivityIndicator />
         ) : (
           <FlatList
             data={data}
-            keyExtractor={({ alkatresz_id }) => alkatresz_id}
+            keyExtractor={({ hasznalt_id }) => hasznalt_id}
             renderItem={({ item }) => (
-              <View>
+              <View key={item.hasznalt_id}>
                 <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 5 }}>
                   {item.hasznalt_info}
                 </Text>
@@ -53,7 +53,7 @@ const Hasznalttart = ({navigation}) => {
             </TouchableOpacity>
 
 
-                <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1 }}></View>
+                <View style={{ marginTop: 15, marginBottom: 20, borderColor: 'gray', borderWidth: 1 }}></View>
 
               </View>
             )}

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView, TextInput,Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { Picker } from '@react-native-picker/picker';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim'
-
-
+import { Picker } from '@react-native-picker/picker';
 
 export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
@@ -19,11 +17,9 @@ export default function ImagePickerExample() {
   var month = new Date().getMonth() + 1;
   var year = new Date().getFullYear();
   var datum = year + '-' + month + '-' + date;
-
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [valasztott, valasztottKomponens] = useState();
-
 
   const getKomponens = async () => {
     try {
@@ -37,62 +33,107 @@ export default function ImagePickerExample() {
     }
   };
 
-
   useEffect(() => {
-    /*
-    var nap = new Date().getDate();
-    var honap = new Date().getMonth() + 1;
-    var ev = new Date().getFullYear();
-    setJelenlegidatum = (ev + '-' + honap + '-' + nap)
-*/
     getKomponens();
-    
+
   }, []);
 
   const createFormData = (photo, body = {}) => {
     const data = new FormData();
-
-    data.append('photo', {
-      name: 'photo.jpg',
-      type: 'image/jpg',
-      uri: Platform.OS === 'ios' ? photo.uri.replace('file://', '') : photo.uri,
-    });
-
+  
+    if (!photo || (photo.cancelled || photo.canceled)) {
+      console.warn('Photo selection was cancelled or failed.');
+      return null;
+    }
+  
+    if (photo.assets && photo.assets.length > 0) {
+      const asset = photo.assets[0];
+      data.append('photo', {
+        name: 'photo.jpg',
+        type: 'image/jpg',
+        uri: asset.uri,
+      });
+    } else {
+      data.append('photo', {
+        name: 'photo.jpg',
+        type: 'image/jpg',
+        uri: Platform.OS === 'android' ? photo.uri.replace('file://', '') : photo.uri,
+      });
+    }
+  
     Object.keys(body).forEach((key) => {
       data.append(key, body[key]);
     });
-
+  
     return data;
   };
 
-
-
-
   const handleUploadPhoto = async () => {
+    console.log(image)
+    /*
+    console.log(bevitel1)
+    console.log(bevitel2)
+    console.log(bevitel3)
+    console.log(bevitel4)
+    console.log(datum)
+    console.log(valasztott)
+    */
+    if (bevitel1 != "" && bevitel2 != "" && bevitel3 != "" && bevitel4!="") {
+      if (bevitel2.includes('@gmail.com') || bevitel2.includes('@freemail.hu') || bevitel2.includes('citromail.hu')) {
 
+        try {
+          if (!image) {
+            alert('Válassz egy képet először!');
+            return;
+          }
 
-    try {
-      if (!image) {
-        console.log('Válassz egy képet először!');
-        return;
+          const response = await fetch(`${Ipcim.Ipcim}api/upload`, {
+            method: 'POST',
+            body: createFormData(image, { bevitel1: bevitel1, datum: datum, bevitel2: bevitel2, bevitel3: bevitel3, bevitel4: bevitel4, bevitel5: valasztott }),
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+
+          if (!response.ok) {
+            // throw new Error('Network request failed');
+          }
+
+          const uzenet = await response.text();
+          console.log(uzenet)
+        } catch (error) {
+          console.log('error', error);
+        }
       }
-
-      const response = await fetch(`${Ipcim.Ipcim}api/upload`, {
-        method: 'POST',
-        body: createFormData(image, { bevitel1: bevitel1, datum: datum, bevitel2: bevitel2, bevitel3: bevitel3, bevitel4: bevitel4, bevitel5: valasztott }),
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      alert("Sikeres feltöltés!")
-      if (!response.ok) {
-        throw new Error('Network request failed');
+      else {
+        Alert.alert(
+          'Hiba történt a vásárlás során',
+          'Kérjük, vásárlás során érvényes email címet adjon meg! (gmail,citromail,freemail)',
+          [
+            {
+              text: 'Ok',
+              style: 'cancel',
+            },
+          ],
+        );
       }
+    }
 
-      const data = await response.json();
-      console.log('response', data);
-    } catch (error) {
-      console.log('error', error.message);
+
+
+
+    else {
+      Alert.alert(
+        'Kérem adja meg az adatait!',
+        '',
+        [
+          {
+            text: 'Ok',
+            style: 'cancel',
+          },
+        ],
+
+      );
     }
   };
 
@@ -103,6 +144,8 @@ export default function ImagePickerExample() {
       aspect: [4, 3],
       quality: 1,
     });
+
+    //console.log(result);
 
     if (!result.cancelled) {
       setImage(result);
@@ -119,7 +162,6 @@ export default function ImagePickerExample() {
           <Text style={{ padding: 10 }}>
             Termék neve:
           </Text>
-
           <TextInput
             style={{ width: 350, height: 40, margin: 5, fontSize: 16, backgroundColor: "#AAD8E6" }}
             placeholder="Ide ird a nevét a terméknek: "
@@ -127,21 +169,23 @@ export default function ImagePickerExample() {
             defaultValue={bevitel1}
           />
 
-          {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
+          <View style={{ width: 200, height: 200 }}>
+            {image && <Image source={{ uri: image.uri }} style={{ flex: 1 }} />}
+          </View>
 
-          <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={() => pickImage()}>
+          <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, borderRadius: 5 }} onPress={pickImage}>
             <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Kép kiválasztása</Text>
           </TouchableOpacity>
 
-
-          <Picker style={{ backgroundColor: "#06c995", margin: 25, height: 50, width: 200 }}
+          <Picker style={{ backgroundColor: "#06c995", margin: 25, height: 50, width: 200, padding: 5 }}
             selectedValue={valasztott}
+            mode='dialog'
             onValueChange={(itemValue, itemIndex) =>
               valasztottKomponens(itemValue)
             }>
             {data.map((item) => {
               return (
-                <Picker.Item label={item.komponens_nev} value={item.komponens_id} />
+                <Picker.Item style={{ borderWidth: 1, borderColor: 'black' }} label={item.komponens_nev} value={item.komponens_id} />
               )
             }
             )}
@@ -157,6 +201,7 @@ export default function ImagePickerExample() {
 
           />
 
+
           <Text>Termék állapota:</Text>
           <TextInput
             style={{ width: 350, height: 40, margin: 5, fontSize: 16, backgroundColor: "#AAD8E6" }}
@@ -164,6 +209,7 @@ export default function ImagePickerExample() {
             onChangeText={newText => setBevitel3(newText)}
             defaultValue={bevitel3}
           />
+
 
           <Text>Termék ára:</Text>
           <TextInput
@@ -176,7 +222,7 @@ export default function ImagePickerExample() {
           />
 
 
-          <TouchableOpacity style={{ backgroundColor: "green", width: 125, height: 45, padding: 10, borderRadius: 5, marginTop: 15 }} onPress={() => handleUploadPhoto()}>
+          <TouchableOpacity style={{ backgroundColor: "green", width: 125, height: 45, padding: 10, borderRadius: 5, marginTop: 15 }} onPress={handleUploadPhoto}>
             <Text style={{ color: "white", textAlign: "center", fontSize: 18, marginTop: -1 }} >Feltöltés</Text>
           </TouchableOpacity>
         </View>

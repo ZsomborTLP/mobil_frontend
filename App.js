@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
@@ -40,7 +40,12 @@ import Készítők from './Készítők';
 
 function HomeScreen({ navigation }) {
 
-
+  useEffect(() => {
+    navigation.navigate('Kosárba')
+    setTimeout(() => {
+      navigation.navigate('Home')
+    }, 0.00005);
+  }, [],)
   
   return (
     <LinearGradient
@@ -84,9 +89,6 @@ function HomeScreen({ navigation }) {
 }
 
 
-
-
-
 function Root({ navigation, route }) {
   //{vanAdat?  : null}
   //const { vanAdat } = route.params ? route.params : { vanAdat: false };
@@ -103,9 +105,6 @@ function Root({ navigation, route }) {
     </Drawer.Navigator>
   );
 }
-
-
-
 
 
 const Drawer = createDrawerNavigator();

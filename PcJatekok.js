@@ -31,7 +31,7 @@ const PcJatekok = ({navigation}) => {
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       
-      <View style={{ flex: 1, padding: 24}}>
+      <View style={{ flex: 1, padding: 24,marginTop:-20,marginBottom:-20}}>
 
         {isLoading ? (
           <ActivityIndicator />
@@ -40,7 +40,7 @@ const PcJatekok = ({navigation}) => {
             data={data}
             keyExtractor={({ jatekok_id }) => jatekok_id}
             renderItem={({ item }) => (
-              <View>
+              <View key={item.jatekok_id}>
                 <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 5 }}>
                   {item.jatekok_nev}
                 </Text>
@@ -49,15 +49,11 @@ const PcJatekok = ({navigation}) => {
 
                 <Text style={{textAlign: 'center', fontSize: 20 }}>{item.jatekok_ar} FT</Text>
 
-            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 67, borderRadius: 5 }} onPress={() => navigation.navigate('Játék_PC', {nev:item.jatekok_nev, kep:item.jatekok_kep, ar:item.jatekok_ar, ev:item.jatekok_megjelenes, trailer:item.jatekok_trailer })}>
+            <TouchableOpacity style={{ backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 67, borderRadius: 5 }} onPress={() => navigation.navigate('Játék_PC', {id:item.jatekok_id,nev:item.jatekok_nev, kep:item.jatekok_kep, ar:item.jatekok_ar, ev:item.jatekok_megjelenes, trailer:item.jatekok_trailer })}>
                 <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Részletek</Text>
             </TouchableOpacity>
 
-
-                
-
-
-                <View style={{ marginTop: 15, marginBottom: 50, borderColor: 'gray', borderWidth: 1, width:300 }}></View>
+                <View style={{ marginTop: 15, marginBottom: 20, borderColor: 'gray', borderWidth: 1, width:300 }}></View>
 
               </View>
             )}

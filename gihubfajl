@@ -1,3 +1,27 @@
-uj
+ if (req.files && req.files[0] && req.files[0].filename) {
+connection.query(`INSERT INTO hasznalttermekek VALUES (NULL, '${req.body.bevitel1}', '${req.body.datum}', '${req.body.bevitel2}', '${req.body.bevitel3}' , '${req.body.bevitel4}', '${req.files[0].filename}', '2', '${req.body.bevitel5}');`, (err, rows, fields) => {
+if (err){
+  console.log("Hiba",err)
+    
+    console.log(req.body.bevitel1)
+    console.log(req.body.bevitel2)
+    console.log(req.body.bevitel3)
+    console.log(req.body.bevitel4)
+    console.log(req.body.bevitel5)
+    console.log(req.files[0].filename)
+    
+  res.send("Hiba")
+}
+else{
+  console.log("Sikeres felvitel")
+  res.send("Sikeres felvitel")
+}
 
-Vajas kenyér
+})
+connection.end() 
+//-----vege---------------
+}
+else {
+  console.log('Hibás vagy hiányzó fájl a kép küldésekor.');
+  res.status(400).send('Hibás vagy hiányzó fájl a kép küldésekor.');
+}

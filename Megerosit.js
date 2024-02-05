@@ -1,60 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim';
 
-const Megerosit = ({ navigation }) => {
+const Megerosit = ({ navigation, route }) => {
+    const { osszes } = route.params || { osszes: 0 }
     const [nev, setNev] = useState('');
     const [email, setEmail] = useState('');
     const [telefonszam, setTelefonszam] = useState('');
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1;
+    var year = new Date().getFullYear();
+    var datum = year + '-' + month + '-' + date;
 
     const [ar, setAr] = useState(0);
 
+    useEffect(() => {
+        //alert(osszes)
+    }, [osszes, datum],)
     const megVasarlas = async () => {
 
         if (nev != "" && email != "" && telefonszam != "") {
-            if (email.includes('@gmail.com') || email.includes('@freemail.com') || email.includes('citromail.hu')) {
-                try {
-
-                    var adatok = {
-                        'nev': nev,
-                        'email': email,
-                        'telefonszam': telefonszam
-                    }
-
-                    const response = await fetch(`${Ipcim.Ipcim}rendeles`, {
-                        method: 'POST',
-                        body: JSON.stringify(adatok),
-                        headers: { "Content-type": "application/json; charset=UTF-8" }
-
-                    });
-
-
-                    if (response.ok) {
-                        Alert.alert(
-                            'Vásárlás sikeres!',
-                            `További információkkal értesítjük önt emailben.`,
-                            [
-                                {
-                                    text: 'Ok',
-                                    style: 'cancel',
-
-                                },
-                            ],
-                        );
-                        navigation.navigate("Kosárba", { nev: nev, ar: ar });
-                        navigation.navigate('Home')
-                    }
-
-
-
-
-                }
-                catch (error) {
-                    console.error('Hiba a vásárlás során:', error);
+            if (email.includes('@gmail.com') || email.includes('@freemail.hu') || email.includes('citromail.hu')) {
+                if (telefonszam.includes('.') || telefonszam.includes(',')) {
                     Alert.alert(
                         'Hiba történt a vásárlás során',
-                        'Kérjük, próbálja újra később',
+                        'Kérjük, érvényes telefonszámot adjon meg ("." és "," használata nélkül)',
                         [
                             {
                                 text: 'Ok',
@@ -62,6 +33,59 @@ const Megerosit = ({ navigation }) => {
                             },
                         ],
                     );
+                }
+                else {
+                    try {
+
+                        var adatok = {
+                            'nev': nev,
+                            'email': email,
+                            'telefonszam': telefonszam,
+                            'datum': datum,
+                            'osszar': osszes
+                        }
+
+                        const response = await fetch(`${Ipcim.Ipcim}rendeles`, {
+                            method: 'POST',
+                            body: JSON.stringify(adatok),
+                            headers: { "Content-type": "application/json; charset=UTF-8" }
+
+                        });
+
+
+                        if (response.ok) {
+                            Alert.alert(
+                                'Vásárlás sikeres!',
+                                `További információkkal értesítjük önt emailben.`,
+                                [
+                                    {
+                                        text: 'Ok',
+                                        style: 'cancel',
+
+                                    },
+                                ],
+                            );
+                            navigation.navigate("Kosárba", { nev: nev, ar: ar });
+                            navigation.navigate('Home')
+                        }
+
+
+
+
+                    }
+                    catch (error) {
+                        console.error('Hiba a vásárlás során:', error);
+                        Alert.alert(
+                            'Hiba történt a vásárlás során',
+                            'Kérjük, próbálja újra később',
+                            [
+                                {
+                                    text: 'Ok',
+                                    style: 'cancel',
+                                },
+                            ],
+                        );
+                    }
                 }
             }
             else {

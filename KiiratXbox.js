@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Image, DefaultTheme, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Alert, Image, DefaultTheme, TouchableOpacity } from 'react-native';
 import Ipcim from './Ipcim';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -8,11 +8,40 @@ const KiiratXbox = ({ route, navigation }) => {
   const { kep } = route.params;
   const { ev } = route.params;
   const { ar } = route.params;
-  const atvisz=()=>{
-    navigation.navigate('Kosárba',{nev:nev,ar:ar});
-    navigation.navigate("Home")
+  var seged=Math.random(1,500)
+ 
+  const felvitel=()=>{
+    navigation.navigate('Kosárba',{nev:nev,ar:ar,seged:seged});
+    navigation.navigate('Home')
   }
 
+  const felvitel2=()=>{
+    navigation.navigate('Kosárba',{nev:nev,ar:ar,seged:seged})
+  }
+
+  const atvisz=()=>{
+    
+    navigation.navigate("Home")
+    Alert.alert(
+      '',
+      'Szeretnél még vásárolni?',
+      [
+        {
+          text: 'Igen',
+          onPress: () => felvitel(),
+          style: 'cancel',
+          
+        },
+        {
+          text: 'Nem',
+          onPress: () => felvitel2(),
+          style: 'cancel',
+        }
+      ],
+
+    //alert(nev)
+    )
+  }
   return (
     <LinearGradient
       colors={['#AAD8E6', '#90EE90']}

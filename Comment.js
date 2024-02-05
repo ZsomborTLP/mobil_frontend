@@ -42,7 +42,7 @@ const Comment = ({ navigation }) => {
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
-      <View style={{ padding: 24 }}>
+      <View style={{ padding: 24, marginTop:-18}}>
         {isLoading ? (
           <ActivityIndicator />
         ) : (
@@ -50,8 +50,9 @@ const Comment = ({ navigation }) => {
             data={data}
             keyExtractor={({ id }) => id}
             renderItem={({ item }) => (
+              <View key={item.Comment_id}>
               <TouchableOpacity onPress={() => commentmegjelen(item.Comment_nev, item.Comment_szoveg)}>
-                <View style={{ borderWidth: 1, borderColor: 'green', borderRadius: 7, marginBottom: 8 }} >
+                <View  style={{ borderWidth: 1, borderColor: 'green', borderRadius: 7, marginBottom: 8 }} >
 
                   <Text style={{ padding: 3, margin: 6, fontSize: 24, textAlign: 'left' }}>{item.Comment_nev} <Text style={{ fontSize: 12, color: 'grey' }}>közzétéve: {item.Comment_ido.split('T')[0]}</Text></Text>
 
@@ -59,12 +60,13 @@ const Comment = ({ navigation }) => {
 
                 </View>
               </TouchableOpacity>
+              </View>
             )}
           />
         )}
 
 
-        <TouchableOpacity style={{ textAlign: 'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 86 }} onPress={() => navigation.navigate('Hozzaszolas')}>
+        <TouchableOpacity style={{ textAlign: 'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 86, borderRadius: 5 }} onPress={() => navigation.navigate('Hozzaszolas')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Hozzászólás</Text>
         </TouchableOpacity>
       </View>
