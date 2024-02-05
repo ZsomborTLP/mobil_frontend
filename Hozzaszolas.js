@@ -209,7 +209,7 @@ const Hozzaszolas = ({ navigation }) => {
                                 },
                             ],
                         );
-                        navigation.navigate("Comment")
+                        navigation.goBack()
                         setComment('')
                         setNev('')
 
@@ -234,7 +234,16 @@ const Hozzaszolas = ({ navigation }) => {
                 }
             }
             else {
-                alert("A neved ne tartalmazzon számot!")
+                Alert.alert(
+                    '',
+                    'A neved ne tartalmazzon számot!',
+                    [
+                      {
+                        text: 'Ok',
+                        style: 'cancel',
+                      },
+                    ],
+                  );
             }
         }
 
