@@ -79,6 +79,7 @@ export default function ImagePickerExample() {
     console.log(valasztott)
     */
     if (bevitel1 != "" && bevitel2 != "" && bevitel3 != "" && bevitel4!="") {
+      if(!/\d/.test(bevitel1) && !/\d/.test(bevitel3)){
       if (bevitel2.includes('@gmail.com') || bevitel2.includes('@freemail.hu') || bevitel2.includes('citromail.hu')) {
 
         try {
@@ -98,7 +99,18 @@ export default function ImagePickerExample() {
           if (!response.ok) {
             // throw new Error('Network request failed');
           }
-
+          if(response.ok){
+            Alert.alert(
+              'Sikeres feltöltés!',
+              'Az ön által feltöltött termék megjelent az alkalmazásban.',
+              [
+                {
+                  text: 'Ok',
+                  style: 'cancel',
+                },
+              ],
+            );
+          }
           const uzenet = await response.text();
           console.log(uzenet)
         } catch (error) {
@@ -119,8 +131,10 @@ export default function ImagePickerExample() {
       }
     }
 
-
-
+else{
+  alert("A neved és a termék állapota ne tartalmazzon számot!")
+}
+  }
 
     else {
       Alert.alert(
@@ -150,6 +164,7 @@ export default function ImagePickerExample() {
     if (!result.cancelled) {
       setImage(result);
     }
+    
   };
 
   return (

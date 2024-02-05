@@ -30,63 +30,68 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
     console.log(feltoltoszoveg)
     console.log(datum)*/
     if (feltonev != "" && feltoltoszoveg != "") {
+      if (!/\d/.test(feltonev)) {
+        try {
 
-      try {
+          var adatok = {
+            'id': id,
+            'nev': feltonev,
+            'comment': feltoltoszoveg,
+            'datum': datum
 
-        var adatok = {
-          'id': id,
-          'nev': feltonev,
-          'comment': feltoltoszoveg,
-          'datum': datum
+          }
+
+          const response = await fetch(`${Ipcim.Ipcim}VelemenyFeltoltes`, {
+            method: 'POST',
+            body: JSON.stringify(adatok),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+
+          });
+
+
+          if (response.ok) {
+            Alert.alert(
+              'Felvitel sikeres!',
+              ``,
+              [
+                {
+                  text: 'Ok',
+                  style: 'cancel',
+
+                },
+              ],
+            );
+
+            setFeltoltonev('')
+            setFeltoltoszoveg('')
+
+          }
+
+
+
 
         }
-
-        const response = await fetch(`${Ipcim.Ipcim}VelemenyFeltoltes`, {
-          method: 'POST',
-          body: JSON.stringify(adatok),
-          headers: { "Content-type": "application/json; charset=UTF-8" }
-
-        });
-
-
-        if (response.ok) {
+        catch (error) {
+          console.error('Hiba a vélemény írás során:', error);
           Alert.alert(
-            'Felvitel sikeres!',
-            ``,
+            'Hiba történt!',
+            'Kérjük, próbálja újra később',
             [
               {
                 text: 'Ok',
                 style: 'cancel',
-
               },
             ],
           );
-
-          setFeltoltonev('')
-          setFeltoltoszoveg('')
-
         }
-
-
-
-
       }
-      catch (error) {
-        console.error('Hiba a vélemény írás során:', error);
-        Alert.alert(
-          'Hiba történt!',
-          'Kérjük, próbálja újra később',
-          [
-            {
-              text: 'Ok',
-              style: 'cancel',
-            },
-          ],
-        );
+
+
+      else {
+        alert("A neved ne tartalmazzon számot!")
       }
+      
     }
-
-
     else {
       Alert.alert(
         'Kérem ne hagyjon üres mezőket!',
@@ -100,7 +105,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
 
       );
     }
-
+    
   }
 
   useEffect(() => {
@@ -176,42 +181,42 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <Text style={{ marginTop: -5 }}></Text>
-        <View style={{ height: 250, width: 350,marginLeft:'auto',marginRight:'auto',justifyContent:'center' }}>
-          <WebView
-            source={{ uri: `${trailer}` }}
-            style={{ flex: 1, opacity: 0.72 }}
-          />
-        </View>
+      <View style={{ height: 250, width: 350, marginLeft: 'auto', marginRight: 'auto', justifyContent: 'center' }}>
+        <WebView
+          source={{ uri: `${trailer}` }}
+          style={{ flex: 1, opacity: 0.72 }}
+        />
+      </View>
       <ScrollView style={styles.container}>
-      <Text style={{ textAlign: 'center', fontSize: 25, marginBottom: 5 }}>{nev}</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25, marginBottom: 5 }}>{nev}</Text>
         <Image source={{ uri: `${Ipcim.Ipcim}${kep}` }} style={{ width: 125, height: 125, marginLeft: 'auto', marginRight: 'auto', borderRadius: 10, }} />
-        <Text style={{ textAlign: 'center', fontSize: 20,marginRight:'auto',marginLeft:'auto' }}>Megjelenési év: {ev.split('T')[0]}</Text>
-        <Text style={{ textAlign: 'center', fontSize: 20,marginLeft:'auto',marginRight:'auto' }}>Termék ára: {ar} Ft</Text>
+        <Text style={{ textAlign: 'center', fontSize: 20, marginRight: 'auto', marginLeft: 'auto' }}>Megjelenési év: {ev.split('T')[0]}</Text>
+        <Text style={{ textAlign: 'center', fontSize: 20, marginLeft: 'auto', marginRight: 'auto' }}>Termék ára: {ar} Ft</Text>
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 180, height: 50, padding: 8, borderRadius: 5,marginLeft:'auto',marginRight:'auto' }} onPress={() => atvisz()}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 180, height: 50, padding: 8, borderRadius: 5, marginLeft: 'auto', marginRight: 'auto' }} onPress={() => atvisz()}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 22 }} >Kosárba tesz</Text>
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 115, height: 45, padding: 8, borderRadius: 5, marginTop: 15,marginRight:'auto',marginLeft:'auto' }} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 115, height: 45, padding: 8, borderRadius: 5, marginTop: 15, marginRight: 'auto', marginLeft: 'auto' }} onPress={() => navigation.goBack()}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
         </TouchableOpacity>
-<Text></Text>
+        <Text></Text>
 
-        <Text style={{ fontSize: 20,marginLeft:'auto',marginRight:'auto' }}>Vélemények: </Text>
+        <Text style={{ fontSize: 20, marginLeft: 'auto', marginRight: 'auto' }}>Vélemények: </Text>
 
         {data.map((item) => {
           return (
             <View style={{ borderWidth: 1, borderColor: 'green', borderRadius: 7, marginBottom: 8 }} >
-            <Text style={{marginLeft:30,fontSize:20}}>{item.velemeny_nev} <Text style={{ fontSize: 12, color: 'grey' }}>közzétéve: {item.velemeny_ido.split('T')[0]}:</Text></Text>
-            <Text style={{fontSize:15,marginLeft:5}}>{item.velemeny_szoveg}</Text>
+              <Text style={{ marginLeft: 30, fontSize: 20 }}>{item.velemeny_nev} <Text style={{ fontSize: 12, color: 'grey' }}>közzétéve: {item.velemeny_ido.split('T')[0]}:</Text></Text>
+              <Text style={{ fontSize: 15, marginLeft: 5 }}>{item.velemeny_szoveg}</Text>
             </View>
           )
         }
         )}
 
 
-        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 155, height: 45, padding: 8, borderRadius: 5, marginTop: 15,marginLeft:'auto',marginRight:'auto' }} onPress={toggleCollapse}>
+        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 155, height: 45, padding: 8, borderRadius: 5, marginTop: 15, marginLeft: 'auto', marginRight: 'auto' }} onPress={toggleCollapse}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 20 }} >Vélemény írás</Text>
         </TouchableOpacity>
         <Text></Text>
@@ -251,7 +256,7 @@ const KiiratPlaystationJatekok = ({ route, navigation }) => {
           </View>
         )}
 
-        
+
       </ScrollView>
     </LinearGradient>
   );
@@ -263,7 +268,7 @@ const styles = StyleSheet.create({
     marginRight: 25,
     marginLeft: 25,
     flex: 1,
-    marginTop:5
+    marginTop: 5
   },
 });
 export default KiiratPlaystationJatekok;

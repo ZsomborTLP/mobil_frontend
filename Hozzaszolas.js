@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
 export default Hozzaszolas;
 */
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim';
@@ -166,6 +166,7 @@ const Hozzaszolas = ({ navigation }) => {
     const [datum, setDatum] = useState('');
 
 
+
     useEffect(() => {
 
         var date = new Date().getDate();
@@ -173,63 +174,67 @@ const Hozzaszolas = ({ navigation }) => {
         var year = new Date().getFullYear();
         var datum = year + '-' + month + '-' + date;
         setDatum(datum);
-    },[]);
+    }, []);
 
     const Commenteles = async () => {
 
         if (nev != "" && comment != "") {
+            if (!/\d/.test(nev)) {
+                try {
 
-            try {
+                    var adatok = {
+                        'nev': nev,
+                        'comment': comment,
+                        'datum': datum
 
-                var adatok = {
-                    'nev': nev,
-                    'comment': comment,
-                    'datum':datum
+                    }
+
+                    const response = await fetch(`${Ipcim.Ipcim}CommentFeltoltes`, {
+                        method: 'POST',
+                        body: JSON.stringify(adatok),
+                        headers: { "Content-type": "application/json; charset=UTF-8" }
+
+                    });
+
+
+                    if (response.ok) {
+                        Alert.alert(
+                            'Felvitel sikeres!',
+                            ``,
+                            [
+                                {
+                                    text: 'Ok',
+                                    style: 'cancel',
+
+                                },
+                            ],
+                        );
+                        navigation.navigate("Comment")
+                        setComment('')
+                        setNev('')
+
+                    }
+
+
+
 
                 }
-
-                const response = await fetch(`${Ipcim.Ipcim}CommentFeltoltes`, {
-                    method: 'POST',
-                    body: JSON.stringify(adatok),
-                    headers: { "Content-type": "application/json; charset=UTF-8" }
-
-                });
-
-
-                if (response.ok) {
+                catch (error) {
+                    console.error('Hiba a vásárlás során:', error);
                     Alert.alert(
-                        'Felvitel sikeres!',
-                        ``,
+                        'Hiba történt!',
+                        'Kérjük, próbálja újra később',
                         [
                             {
                                 text: 'Ok',
                                 style: 'cancel',
-
                             },
                         ],
                     );
-                    navigation.navigate("Comment")
-                    setComment('')
-                    setNev('')
-                    
                 }
-
-
-
-
             }
-            catch (error) {
-                console.error('Hiba a vásárlás során:', error);
-                Alert.alert(
-                    'Hiba történt!',
-                    'Kérjük, próbálja újra később',
-                    [
-                        {
-                            text: 'Ok',
-                            style: 'cancel',
-                        },
-                    ],
-                );
+            else {
+                alert("A neved ne tartalmazzon számot!")
             }
         }
 
@@ -256,31 +261,31 @@ const Hozzaszolas = ({ navigation }) => {
         >
             <ScrollView style={{ flex: 1 }}>
                 <View style={{ alignItems: 'center' }}>
-                    
-                        <Text style={{marginRight:285,fontSize:25}}>Név:</Text>
+
+                    <Text style={{ marginRight: 285, fontSize: 25 }}>Név:</Text>
                     <TextInput
-                        style={{height: 40,width: 340,margin: 12,borderWidth: 1,padding: 10, }}
+                        style={{ height: 40, width: 340, margin: 12, borderWidth: 1, padding: 10, }}
                         placeholder="Pl: Fekete Ádám"
                         onChangeText={newText => setNev(newText)}
                         defaultValue={nev}
                     />
 
 
-                    <Text style={{ marginTop: 10, fontSize: 25,marginRight:190 }}>Hozzászólás:</Text>
+                    <Text style={{ marginTop: 10, fontSize: 25, marginRight: 190 }}>Hozzászólás:</Text>
                     <TextInput
-                        style={{ height: 40,width: 340,height: 240,margin: 12,borderWidth: 1,padding: 10,textAlignVertical: 'top'}}
+                        style={{ height: 40, width: 340, height: 240, margin: 12, borderWidth: 1, padding: 10, textAlignVertical: 'top' }}
                         placeholder="Pl:Nekem a pókember film nem tetszett, a felétől unalmas és monoton volt az egész."
                         onChangeText={newText => setComment(newText)}
                         defaultValue={comment}
                         keyboardType="email-address"
                     />
 
-                    
+
                     <View>
                         <TouchableOpacity style={{ backgroundColor: "green", width: 185, height: 57, padding: 8, borderRadius: 25, marginTop: 15 }} onPress={Commenteles}>
                             <Text style={{ color: "black", textAlign: "center", fontSize: 26, marginTop: 1 }} >Hozzászólás</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, borderRadius: 25,marginLeft:28,marginTop:15 }} onPress={() => navigation.goBack()}>
+                        <TouchableOpacity style={{ backgroundColor: "#06c995", width: 125, height: 45, padding: 8, borderRadius: 25, marginLeft: 28, marginTop: 15 }} onPress={() => navigation.goBack()}>
                             <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Vissza</Text>
                         </TouchableOpacity>
 

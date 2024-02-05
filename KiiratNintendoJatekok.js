@@ -32,7 +32,7 @@ const KiiratNintendoJatekok = ({ route, navigation }) => {
     console.log(feltoltoszoveg)
     console.log(datum)*/
     if (feltonev != "" && feltoltoszoveg != "") {
-
+      if(!/\d/.test(feltonev)){
       try {
 
         var adatok = {
@@ -86,6 +86,10 @@ const KiiratNintendoJatekok = ({ route, navigation }) => {
           ],
         );
       }
+    }
+      else{
+        alert("A neved ne tartalmazzon számot!")
+    }
     }
 
 
