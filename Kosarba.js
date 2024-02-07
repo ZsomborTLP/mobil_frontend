@@ -156,6 +156,8 @@ const styles = {
     borderTopRightRadius: 10,
     margin: 10, 
     marginBottom:-15,
+    marginTop:-15,
+    
 
     
   },

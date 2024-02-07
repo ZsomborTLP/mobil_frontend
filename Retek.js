@@ -85,7 +85,7 @@ const Proba2 = ({ navigation }) => {
         <Picker
           style={{ backgroundColor: "#06c995", margin: 25, height: 50, width: 200, padding: 5 }}
           mode="dropdown"
-          dropdownIconColor={'white'}
+          dropdownIconColor={'grey'}
           selectedValue={valasztott}
           onValueChange={(itemValue, itemIndex) => {
             valasztottKomponens(itemValue);

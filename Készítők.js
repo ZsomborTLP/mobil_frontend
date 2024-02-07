@@ -13,10 +13,10 @@ const Készítők = () => {
             style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
             <View style={{ flex: 1, padding: 24 }}>
-                <Text style={{fontSize:50,marginTop:45}}>Készítette:</Text>
-                <Text style={{fontSize:30,textAlign:'center'}}>Hajdu Lajos</Text>
+                <Text style={{fontSize:50,marginTop:45,fontWeight:"bold",textDecorationLine:'underline',color:'blue'}}>Készítette:</Text>
+                <Text style={{fontSize:35,textAlign:'center', color:'grey'}}>Hajdu Lajos</Text>
                 <Text style={{textAlign:'center',fontSize:25}}>és</Text>
-                <Text style={{fontSize:30,textAlign:'center'}}>Faur Zsombor</Text>
+                <Text style={{fontSize:35,textAlign:'center',color:'grey'}}>Faur Zsombor</Text>
             </View>
             <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25 }} />
         </LinearGradient>

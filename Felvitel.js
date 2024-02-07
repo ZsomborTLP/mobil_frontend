@@ -4,6 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim'
 import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ImagePickerExample({}) {
   const [image, setImage] = useState(null);
@@ -20,6 +21,7 @@ export default function ImagePickerExample({}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [valasztott, valasztottKomponens] = useState();
+  const navigation = useNavigation();
 
   const getKomponens = async () => {
     try {
@@ -112,7 +114,7 @@ export default function ImagePickerExample({}) {
                 },
               ],
             );
-            
+            navigation.navigate('Home');
             
           }
           const uzenet = await response.text();
