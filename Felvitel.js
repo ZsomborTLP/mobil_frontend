@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView, TextInput,Alert } from 'react-native';
+import {Image, View, Platform, TouchableOpacity, Text, ScrollView, TextInput,Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ipcim from './Ipcim'
 import { Picker } from '@react-native-picker/picker';
 
-export default function ImagePickerExample() {
+export default function ImagePickerExample({}) {
   const [image, setImage] = useState(null);
   const [bevitel1, setBevitel1] = useState('');
   const [bevitel2, setBevitel2] = useState('');
@@ -68,7 +68,7 @@ export default function ImagePickerExample() {
     return data;
   };
 
-  const handleUploadPhoto = async () => {
+  const handleUploadPhoto = async ({}) => {
     console.log(image)
     /*
     console.log(bevitel1)
@@ -79,7 +79,7 @@ export default function ImagePickerExample() {
     console.log(valasztott)
     */
     if (bevitel1 != "" && bevitel2 != "" && bevitel3 != "" && bevitel4!="") {
-      if(!/\d/.test(bevitel1) && !/\d/.test(bevitel3)){
+      if(!/\d/.test(bevitel3)){
       if (bevitel2.includes('@gmail.com') || bevitel2.includes('@freemail.hu') || bevitel2.includes('citromail.hu')) {
 
         try {
@@ -100,6 +100,7 @@ export default function ImagePickerExample() {
             // throw new Error('Network request failed');
           }
           if(response.ok){
+            
             Alert.alert(
               'Sikeres feltöltés!',
               'Az ön által feltöltött termék megjelent az alkalmazásban.',
@@ -107,9 +108,12 @@ export default function ImagePickerExample() {
                 {
                   text: 'Ok',
                   style: 'cancel',
+                  
                 },
               ],
             );
+            
+            
           }
           const uzenet = await response.text();
           console.log(uzenet)
@@ -132,7 +136,7 @@ export default function ImagePickerExample() {
     }
 
 else{
-  alert("A neved és a termék állapota ne tartalmazzon számot!")
+  alert("A termék állapota ne tartalmazzon számot!")
 }
   }
 
@@ -245,3 +249,4 @@ else{
     </LinearGradient>
   );
 }
+

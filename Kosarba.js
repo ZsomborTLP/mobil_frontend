@@ -29,6 +29,20 @@ const Kosárba = ({ route, navigation }) => {
   };
 
   const urites = () => {
+    if (osszes == 0) {
+      Alert.alert(
+        'A kosarad jelenleg üres!',
+        '',
+        [
+          {
+            text: 'Ok',
+            style: 'cancel',
+          },
+        ],
+      );
+      navigation.navigate('Home');
+    }
+    else{
       Alert.alert(
         '',
         'Biztos ki üríted a kosarad? ',
@@ -45,6 +59,7 @@ const Kosárba = ({ route, navigation }) => {
           }
         ],)
       };
+    }
 
 const veglegesurites=()=>{
   if (osszes == 0) {
@@ -87,6 +102,13 @@ const veglegesurites=()=>{
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center' }}
     >
+      {adatok.length === 0 ? (
+  <View style={{}}>
+    <Text style={{fontSize:22,marginTop:"70%",marginLeft:"18%",color:"grey"}}>A kosarad jelenleg üres.</Text>
+  </View>
+) : null}
+
+
       <ScrollView>
         <View>
           <FlatList
@@ -106,21 +128,37 @@ const veglegesurites=()=>{
             )}
           />
         </View>
-        <View style={{ marginTop: 15 }}>
-          <Text style={{ marginBottom: 20, fontSize: 20, marginLeft: 90, textAlign: 'center' }}>Összes ár: {osszes}FT</Text>
-          <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 75, height: 75, borderRadius: 55, marginBottom: 25, marginLeft: 25, marginTop: -50 }} />
-          <TouchableOpacity style={{ backgroundColor: '#06c995', width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -50, paddingTop: 10 }} onPress={() => vasarlas()}>
-            <Text style={{ color: 'black', textAlign: 'center', fontSize: 25 }} >Vásárlás</Text>
+        
+      </ScrollView>
+
+      <View style={styles.controls} elevation={6}>
+          <Text style={{ marginBottom: 20, fontSize: 20, marginLeft: 90, textAlign: 'center',marginBottom:-10, }}>Összes ár: {osszes} FT</Text>
+          <Image source={{ uri: `${Ipcim.Ipcim}logo.jpg` }} style={{ width: 80, height: 80, borderRadius: 40, marginBottom: 25, marginLeft: 25, marginTop: -50 ,marginBottom:60}} />
+          <TouchableOpacity style={{ backgroundColor: '#06c995', width: 185, height: 60, padding: 8, marginLeft: 175, borderRadius: 25, marginTop: -70, paddingTop: 10,marginBottom:-65 }} onPress={() => vasarlas()}>
+            <Text style={{ color: 'black', textAlign: 'center', fontSize: 25}} >Vásárlás</Text>
           </TouchableOpacity>
           <Text></Text>
-          <TouchableOpacity style={{ backgroundColor: 'red', width: 145, height: 45, padding: 8, marginLeft: 25, borderRadius: 25 }} onPress={() => urites()}>
+          <TouchableOpacity style={{ backgroundColor: 'red', width: 135, height: 45, padding: 8, marginLeft: 10, borderRadius: 25,marginBottom:8 }} onPress={() => urites()}>
             <Text style={{ color: 'black', textAlign: 'center', fontSize: 18 }} >Kosár ürítése!</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
     </LinearGradient>
   );
 };
+const styles = {
+  controls: {
+    
+    borderRadius: 5, 
+    padding: 20,
+    marginLeft:-10,
+    marginRight:-20, 
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    margin: 10, 
+    marginBottom:-15,
 
+    
+  },
+};
 
 export default Kosárba;
