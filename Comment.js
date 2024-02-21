@@ -42,7 +42,7 @@ const Comment = ({ navigation }) => {
       colors={['#AAD8E6', '#90EE90']}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
-      <View style={{ padding: 24, marginTop:-18}}>
+      <View style={{ padding: 24, marginTop: -18 }}>
         {isLoading ? (
           <ActivityIndicator />
         ) : (
@@ -51,22 +51,22 @@ const Comment = ({ navigation }) => {
             keyExtractor={({ id }) => id}
             renderItem={({ item }) => (
               <View key={item.Comment_id}>
-              <TouchableOpacity onPress={() => commentmegjelen(item.Comment_nev, item.Comment_szoveg)}>
-                <View  style={{ borderWidth: 1, borderColor: 'green', borderRadius: 7, marginBottom: 8 }} >
+                <TouchableOpacity onPress={() => commentmegjelen(item.Comment_nev, item.Comment_szoveg)}>
+                  <View style={{ borderWidth: 1, borderColor: 'green', borderRadius: 7, marginBottom: 8 }} >
 
-                  <Text style={{ padding: 3, margin: 6, fontSize: 24, textAlign: 'left' }}>{item.Comment_nev} <Text style={{ fontSize: 12, color: 'grey' }}>közzétéve: {item.Comment_ido.split('T')[0]}</Text></Text>
+                    <Text style={{ padding: 3, margin: 6, fontSize: 24, textAlign: 'left' }}>{item.Comment_nev} <Text style={{ fontSize: 12, color: 'grey' }}>közzétéve: {item.Comment_ido.split('T')[0]}</Text></Text>
 
-                  <Text style={{ textAlign: 'center', fontSize: 17 }}>{item.Comment_szoveg}</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 17 }}>{item.Comment_szoveg}</Text>
 
-                </View>
-              </TouchableOpacity>
+                  </View>
+                </TouchableOpacity>
               </View>
             )}
           />
         )}
 
-
-        <TouchableOpacity style={{ textAlign: 'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 84.5, borderRadius: 5 ,marginBottom:-15}} onPress={() => navigation.navigate('Hozzaszolas')}>
+        <View style={{marginTop:8}}></View>
+        <TouchableOpacity style={{ textAlign: 'center', backgroundColor: "#06c995", width: 175, height: 45, padding: 8, marginLeft: 84.5, borderRadius: 5, marginBottom: -15 }} onPress={() => navigation.navigate('Hozzaszolas')}>
           <Text style={{ color: "black", textAlign: "center", fontSize: 18 }} >Hozzászólás</Text>
         </TouchableOpacity>
       </View>

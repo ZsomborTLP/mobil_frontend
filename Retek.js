@@ -94,12 +94,9 @@ const Proba2 = ({ navigation }) => {
 
         >
           <Picker.Item style={{ backgroundColor: '#06c995', borderWidth: 1, borderColor: 'black' }} label='Összes' value='120' />
-
           {komponensdata.map((item) => {
             return (
-
               <Picker.Item style={{ backgroundColor: '#06c995', borderWidth: 1, borderColor: 'black' }} label={item.komponens_nev} value={item.komponens_id} />
-
             )
           }
           )}

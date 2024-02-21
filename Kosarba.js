@@ -18,7 +18,7 @@ const Kosárba = ({ route, navigation }) => {
       setAdatok((elozoAdatok) => [...elozoAdatok, { nev, ar }]);
       setOsszes((elozoOsszeg) => elozoOsszeg + ar);
     }
-  }, [nev, ar, seged]);
+  }, [nev, ar]);
 
   const torles = (index) => {
     const toroltAr = adatok[index].ar; 
@@ -62,19 +62,7 @@ const Kosárba = ({ route, navigation }) => {
     }
 
 const veglegesurites=()=>{
-  if (osszes == 0) {
-    Alert.alert(
-      'A kosarad jelenleg üres!',
-      '',
-      [
-        {
-          text: 'Ok',
-          style: 'cancel',
-        },
-      ],
-    );
-    navigation.navigate('Home');
-  }
+  navigation.navigate('Home');
   setAdatok([]);
   setOsszes(0);
 }
