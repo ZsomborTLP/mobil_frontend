@@ -12,6 +12,7 @@ export default function ImagePickerExample() {
   const [bevitel3, setBevitel3] = useState('');
   const [bevitel4, setBevitel4] = useState('');
   var [jelenlegidatum, setJelenlegidatum] = useState('');
+var valami="";
 
   var date = new Date().getDate();
   var month = new Date().getMonth() + 1;
